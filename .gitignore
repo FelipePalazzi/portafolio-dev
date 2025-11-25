@@ -3,6 +3,7 @@ dist/
 
 # generated types
 .astro/
+gsap-public/
 
 # dependencies
 node_modules/
