@@ -26,4 +26,16 @@
       animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
     }
   }
+  --animate-photo-bouncing: bouncing_photo 4s ease-out infinite;
+  @keyframes bouncing_photo {
+    50% {
+      transform: translateY(-3%);
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    0,
+    100% {
+      transform: translateY(3%);
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+  }
 }
