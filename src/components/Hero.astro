@@ -1,0 +1,59 @@
+---
+import Image from "astro/components/Image.astro";
+import About from "./About.astro";
+import Contact from "./Contact.astro";
+import Projects from "./Projects.astro";
+import Skills from "./Skills.astro";
+import SocialIcons from "./SocialIcons.astro";
+import ProfileImage from "../assets/Profile.webp";
+---
+
+<main
+    id="home"
+    class="flex-1 justify-center flex flex-col h-full min-w-full max-w-full xl:px-40 md:-my-15"
+>
+    {/*Presentacion imagen mas breve texto */}
+    <div
+        class="flex w-full min-h-dvh items-center justify-center relative md:flex-row flex-col gap-5"
+    >
+        <Image
+            src={ProfileImage}
+            alt="Foto de perfil"
+            width="300"
+            height="300"
+            decoding="async"
+            loading="eager"
+            fetchpriority="auto"
+            class="z-20 flex object-contain rounded-3xl md:mask-none mask-radial-at-center mask-b-from-primary-200 mask-b-from-30% shadow-lg shadow-primary-800 hover:scale-105 transition"
+        />
+        <div class="flex flex-col gap-5">
+            <h1
+                class="flex md:grow justify-center items-start text-primary-700 font-bold md:text-7xl text-5xl text"
+            >
+                Hola! Soy Felipe Palazzi
+            </h1>
+            <h3
+                class="flex md:grow justify-start items-start text-primary-600/90 font-bold md:text-3xl text-2xl split"
+            >
+                Desarrollador full stack
+            </h3>
+            <SocialIcons />
+        </div>
+    </div>
+    {/*About */}
+    <div class="flex flex-col w-full h-full justify-center select-none">
+        <About />
+    </div>
+    {/*Proyectos */}
+    <div class="flex flex-col w-full h-full justify-center select-none">
+        <Projects />
+    </div>
+    {/*Habilidades */}
+    <div class="flex flex-col w-full h-full justify-center select-none">
+        <Skills />
+    </div>
+    {/*Contact */}
+    <div class="flex flex-col w-full h-full justify-center select-none">
+        <Contact />
+    </div>
+</main>

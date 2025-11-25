@@ -1,0 +1,58 @@
+---
+import Image from "astro/components/Image.astro";
+---
+
+<section class="h-full w-full flex gap-3">
+    <a
+        href="https://github.com/FelipePalazzi"
+        target="_blank"
+        class="p-2 size-12 items-center justify-center
+    rounded-full hover:scale-110 transition-transform flex bg-black
+    shadow-md shadow-primary-800"
+        aria-label="Github"
+        title="Ir a mi perfil de Github"
+    >
+        <Image
+            class="invert"
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+            alt="Github"
+            width="112"
+            height="112"
+            loading="eager"
+        />
+    </a>
+    <a
+        href="https://www.linkedin.com/in/felipepalazzi"
+        target="_blank"
+        class="p-2 size-12 items-center justify-center
+    rounded-full hover:scale-110 transition-transform flex bg-cyan-700/95
+    shadow-md shadow-primary-800"
+        aria-label="Linkedin"
+        title="Perfil de linkedin"
+    >
+        <Image
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg"
+            alt="LinkedIn"
+            width="112"
+            height="112"
+            loading="eager"
+        />
+    </a>
+    <a
+        href="mailto:palazzifelipe@gmail.com"
+        target="_blank"
+        class="p-2 size-12 items-center justify-center
+    rounded-full hover:scale-110 transition-transform flex bg-white
+    shadow-md shadow-primary-800"
+        aria-label="Email"
+        title="Enviame un email"
+    >
+        <Image
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/1024px-Gmail_icon_%282020%29.svg.png"
+            alt="Gmail"
+            width="112"
+            height="112"
+            loading="eager"
+        />
+    </a>
+</section>

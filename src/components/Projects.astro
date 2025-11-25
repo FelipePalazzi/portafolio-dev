@@ -1,0 +1,130 @@
+---
+import Image from "astro/components/Image.astro";
+import Expenzzi from "../assets/Expenzzi.jpg";
+---
+
+<section id="projects" class="py-20">
+    <span
+        class="flex justify-center
+             text-[70px] md:text-[140px] font-extrabold
+               bg-linear-to-b from-primary-400/90 to-primary-700/10 blur-2x1 z-0
+               bg-clip-text text-transparent"
+    >
+        Proyectos
+    </span>
+    <div
+        class="grid md:grid-cols-3 grid-cols-1 md:gap-3 gap-5 justify-center max-w-full md:mb-20"
+    >
+        <span
+            class="col-span-3 py-30 rounded-2xl relative flex justify-start flex-col
+    bg-primary-700/50 border border-primary-100/60
+    bg-linear-to-b from-[#252b5b] to-primary-100/50 backdrop-backdrop-saturate-200
+    backdrop-blur-2xl
+    hover:scale-105 transition group"
+        >
+            <Image
+                src={Expenzzi}
+                alt="Expenzzi"
+                width="80"
+                height="80"
+                loading="lazy"
+                class="absolute bottom-0 right-0 rounded"
+            />
+            <div
+                class="flex flex-col absolute gap-2 top-0 left-1/2 -translate-x-1/2"
+            >
+                <h1
+                    class="flex justify-center text-white font-semibold text-4xl"
+                >
+                    Expenzzi
+                </h1>
+                <p
+                    class="flex justify-center text-white font-nomral text-3xl opacity-85 group-hover:opacity-100 transition"
+                >
+                    Aplicacion móvil colaborativa para gestionar gasto, ingresos
+                    y ahorros
+                </p>
+            </div>
+        </span>
+        <span
+            class="md:col-span-2 col-span-3 row-start-2 py-20 rounded-2xl relative flex justify-start flex-col
+    bg-primary-700/50 border border-primary-100/60
+    bg-linear-to-b from-primary-500/80 to-primary-100/50 backdrop-saturate-200
+    backdrop-blur-2xl
+        hover:scale-105 transition group"
+        >
+            <div
+                class="flex flex-col absolute gap-2 top-0 left-1/2 -translate-x-1/2"
+            >
+                <h1
+                    class="flex justify-center text-white font-semibold text-3xl"
+                >
+                    Project2
+                </h1>
+                <p class="flex justify-center text-white font-nomral text-2xl">
+                    Description Project2
+                </p>
+            </div>
+        </span>
+        <span
+            class="md:col-span-1 col-span-3 row-start-3 md:row-start-2 py-20 rounded-2xl relative flex justify-start flex-col
+    bg-primary-700/50 border border-primary-100/60
+    bg-linear-to-b from-primary-500/80 to-primary-100/50 backdrop-saturate-200
+    backdrop-blur-2xl
+        hover:scale-105 transition group"
+        >
+            <div
+                class="flex flex-col absolute gap-2 top-0 left-1/2 -translate-x-1/2"
+            >
+                <h1
+                    class="flex justify-center text-white font-semibold text-lg"
+                >
+                    Project3
+                </h1>
+                <p class="flex justify-center text-white font-nomral text-m">
+                    Description Project3
+                </p>
+            </div>
+        </span>
+        <span
+            class="col-span-3 md:col-span-1 md:row-start-3 row-start-4 py-20 rounded-2xl relative flex justify-start flex-col
+    bg-primary-700/50 border border-primary-100/60
+    bg-linear-to-b from-primary-500/80 to-primary-100/50 backdrop-saturate-200
+    backdrop-blur-2xl
+        hover:scale-105 transition group"
+        >
+            <div
+                class="flex flex-col absolute gap-2 top-0 left-1/2 -translate-x-1/2"
+            >
+                <h1
+                    class="flex justify-center text-white font-semibold text-lg"
+                >
+                    Project4
+                </h1>
+                <p class="flex justify-center text-white font-nomral text-m">
+                    Description Project4
+                </p>
+            </div>
+        </span>
+        <span
+            class="col-span-3 md:col-span-2 md:row-start-3 row-start-5 py-20 rounded-2xl relative flex justify-start flex-col
+    bg-primary-700/50 border border-primary-100/60
+    bg-linear-to-b from-primary-500/80 to-primary-100/50 backdrop-saturate-200
+    backdrop-blur-2xl
+        hover:scale-105 transition group"
+        >
+            <div
+                class="flex flex-col absolute gap-2 top-0 left-1/2 -translate-x-1/2"
+            >
+                <h1
+                    class="flex justify-center text-white font-semibold text-2xl"
+                >
+                    Project5
+                </h1>
+                <p class="flex justify-center text-white font-nomral text-lg">
+                    Description Project5
+                </p>
+            </div>
+        </span>
+    </div>
+</section>

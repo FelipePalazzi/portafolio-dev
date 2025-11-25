@@ -1,0 +1,29 @@
+@import 'tailwindcss';
+@theme {
+  /*Colores*/
+--color-primary-50: #f1fcf9;
+--color-primary-100: #d1f6ee;
+--color-primary-200: #a3ecdf;
+--color-primary-300: #6edaca;
+--color-primary-400: #3ec0b1;
+--color-primary-500: #26a699;
+--color-primary-600: #1c857d;
+--color-primary-700: #1b6a65;
+--color-primary-800: #1a5552;
+--color-primary-900: #1a4744;
+--color-primary-950: #092a29;
+
+  /*Aniamciones*/
+  --animate-header-bouncing: bouncing 2s ease-out infinite;
+  @keyframes bouncing {
+    50% {
+      transform: translateY(-25%);
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    0,
+    100% {
+      transform: translateY(0%);
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+  }
+}

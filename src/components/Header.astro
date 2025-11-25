@@ -1,0 +1,82 @@
+---
+import Image from "astro/components/Image.astro";
+import ProfileImage from "../assets/Profile.webp";
+---
+
+<header
+    class="flex sticky flex-none h-15 top-5 justify-center items-center xl:w-2/3 max-w-dvh w-full py-5 mx-auto
+    bg-linear-to-b from-primary-100/80 to-primary-100/50 saturate-200 backdrop-blur-md
+    border-2 border-primary-100 z-50
+    rounded-2xl my-5"
+>
+    {/*Imagen a la izquierda*/}
+    <div class="absolute inset-0 items-center flex saturate-50">
+        <a
+            href="#home"
+            title="Menu"
+            aria-label="Menu"
+            class="hover:text-primary-600 hover:animate-header-bouncing hover:scale-110"
+            >
+            <Image
+                class="rounded-full mx-6"
+                src={ProfileImage}
+                alt="foto"
+                width="50"
+                height="50"
+                loading="eager"
+            />
+        </a>
+    </div>
+    {/*Menu si el dispositivo es muy pequeño*/}
+    <a
+        href="/"
+        class="absolute right-0 py-2 px-3 mr-5
+    bg-linear-to-b from-primary-100/80 to-primary-500/95
+    border-2 border-primary-100
+    rounded-2xl visible md:invisible z-10"
+        title="Menu"
+        aria-label="Menu"
+        >☰
+    </a>
+    {/*Botones del header*/}
+    <div
+        class="overflow-hidden group flex items-center max-w-full px-10 py-5 z-0 justify-around mx-10"
+    >
+        <a
+            href="#about"
+            class="justify-center py-1 px-3
+                rounded-2xl mx-5 invisible md:visible
+                text-lg tracking-wide font-bold leading-none text-primary-900/80
+                hover:text-primary-600 hover:animate-header-bouncing hover:scale-110"
+        >
+            About
+        </a>
+        <a
+            href="#projects"
+            class="justify-center py-1 px-3
+                rounded-2xl mx-5 invisible md:visible
+                text-lg tracking-wide font-bold leading-none text-primary-900/80
+                hover:text-primary-600 hover:animate-header-bouncing hover:scale-110"
+        >
+            Projects
+        </a>
+        <a
+            href="#skills"
+            class="justify-center py-1 px-3
+                rounded-2xl mx-5 invisible md:visible
+                text-lg tracking-wide font-bold leading-none text-primary-900/80
+                hover:text-primary-600 hover:animate-header-bouncing hover:scale-110"
+        >
+            Skills
+        </a>
+        <a
+            href="#contact"
+            class="justify-center py-1 px-3
+                rounded-2xl mx-5 invisible md:visible
+                text-lg tracking-wide font-bold leading-none text-primary-900/80
+                hover:text-primary-600 hover:animate-header-bouncing hover:scale-110"
+        >
+            Contact
+        </a>
+    </div>
+</header>
