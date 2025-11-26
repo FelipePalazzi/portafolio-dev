@@ -2,4 +2,41 @@
 import Titles from "../common/Titles.astro";
 ---
 
-<Titles title="Sobre mi" idLink="about">
+<section id="about" class="flex flex-col h-dvh w-full">
+    <Titles title="Sobre mi" idLink="about" />
+    <div class="flex w-full h-full gap-10 md:flex-row flex-col">
+        <div class="flex h-full aspect-square">
+            {/*Imagen presentacion */}
+            <div
+                class="w-full h-full
+               bg-[url(../assets/About.png)] bg-no-repeat bg-cover
+               rounded-2xl"
+            >
+            </div>
+        </div>
+
+        {/*Texto de presentacion */}
+        <div
+            class="flex w-full flex-wrap flex-col md:gap-5 gap-3 md:items-start items-center"
+        >
+            <h1
+                class="flex md:text-start text-center items-start text-primary-700 font-bold text-[clamp(1.5rem,1.8vw,9rem)] split whitespace-normal"
+            >
+                Residente en Concepción del Uruguay- Entre Ríos - Argentina
+            </h1>
+            <h1
+                class="flex md:text-start text-center items-start text-primary-700 font-bold text-[clamp(1.5rem,1.8vw,9rem)] split whitespace-normal"
+            >
+                Actualmente estudiante en la facultad UTN-FRCU. Cursando mi 4to
+                año
+            </h1>
+            <h3
+                class="flex text-start items-start text-primary-600/90 font-bold text-[clamp(1rem,0.5vw,9rem)] split whitespace-normal"
+            >
+                Soy un desarrollador junior interesado en crear soluciones
+                eficientes y aprender nuevas tecnologías Me gusta trabajar con
+                JavaScript, React, Node y bases de datos PostgresSQL
+            </h3>
+        </div>
+    </div>
+</section>

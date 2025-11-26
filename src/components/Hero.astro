@@ -1,68 +1,71 @@
 ---
-import Image from "astro/components/Image.astro";
 import About from "./About.astro";
 import Contact from "./Contact.astro";
 import Projects from "./Projects.astro";
 import Skills from "./Skills.astro";
 import SocialIcons from "./SocialIcons.astro";
-import ProfileImage from "../assets/Profile.webp";
 import Chevron from "../common/Chevron.astro";
 ---
 
 <main
     id="home"
-    class="flex-1 justify-center flex flex-col h-full min-w-full max-w-full xl:px-40 md:-my-25
+    class="flex-1 justify-center flex flex-col h-full min-w-full max-w-full md:-my-25
     relative"
 >
     {/*Presentacion imagen mas breve texto */}
     <div
-        class="flex w-full min-h-dvh items-center justify-center relative md:flex-row flex-col gap-5"
+        class="flex w-full min-h-dvh items-center md:justify-center justify-start md:mt-0 -mt-15 md:flex-row flex-col md:gap-5 relative"
     >
         {/*Imagen de perfil */}
-        <div class="relative w-[800px] h-[800px]">
-            <!-- Borde con máscara -->
+        <div class="flex relative w-full max-w-[800px] aspect-square">
+            {/*Borde con máscara */}
             <div
-                class="absolute inset-0 border-20 border-primary-950/80
-               bg-primary-950/80
-               mask-[url(../assets/maskProfile.svg)] mask-size-contain mask-no-repeat"
+                class="absolute inset-0 border-20 border-primary-950/50
+               bg-primary-950/50
+               mask-[url(../assets/maskProfile.svg)] mask-size-contain mask-no-repeat mask-position-center"
             >
             </div>
-
-            <!-- Imagen interior con máscara -->
+            {/*Imagen interior con máscara */}
             <div
-                class="absolute inset-2 p-20 bg-origin-content
-               bg-[url(../assets/Profile.webp)] bg-cover 
-               mask-[url(../assets/maskProfile.svg)] mask-size-contain mask-no-repeat"
+                class="absolute inset-0 top-3 left-3
+               bg-[url(../assets/Profile.webp)] bg-cover
+               mask-[url(../assets/maskProfile.svg)] mask-size-contain mask-no-repeat mask-position-center"
             >
             </div>
         </div>
 
         {/*Texto de presentacion */}
-        <div class="flex flex-col gap-5 md:items-start items-center">
+        <div
+            class="flex flex-col md:gap-5 gap-3 md:items-start items-center md:-ml-20 ml-0"
+        >
             <h1
-                class="flex md:grow md:text-start text-center items-start text-primary-700 font-bold md:text-7xl text-6xl text whitespace-normal"
+                class="flex md:text-start text-center items-start text-primary-700 font-bold text-[clamp(2.5rem,3vw,9rem)] text whitespace-normal"
             >
                 Hola!
             </h1>
             <h1
-                class="flex md:grow md:text-start text-center items-start text-primary-700 font-bold md:text-7xl text-6xl text whitespace-normal"
+                class="flex md:text-start text-center items-start text-primary-700 font-bold text-[clamp(3rem,3vw,9rem)] text whitespace-normal"
             >
-               Soy Felipe Palazzi
+                Soy Felipe Palazzi
             </h1>
             <h3
-                class="flex md:grow text-start items-start text-primary-600/90 font-bold md:text-3xl text-2xl split whitespace-normal"
+                class="flex text-start items-start text-primary-600/90 font-bold text-[clamp(1.7rem,0.2vw,9rem)] split whitespace-normal"
             >
                 Desarrollador full stack
             </h3>
             <SocialIcons />
         </div>
     </div>
-    {/* Display del ver mas */}
-    <a href="#about" class="flex w-full justify-center">
-        <div class="flex -mt-25 w-20 h-20 z-20">
-            <Chevron />
-        </div>
+    <a
+        href="#about"
+        title="Ver más"
+        aria-label="Ver más"
+        class="sticky bottom-5 mt-10 flex w-20 h-20 justify-center mx-auto z-20"
+    >
+        <Chevron />
     </a>
+    {/* Display del ver mas */}
+
     {/*About */}
     <div class="flex flex-col w-full h-full justify-center select-none">
         <About />

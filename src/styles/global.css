@@ -1,17 +1,19 @@
 @import 'tailwindcss';
+
 @theme {
   /*Colores*/
---color-primary-50: #f1fcf9;
---color-primary-100: #d1f6ee;
---color-primary-200: #a3ecdf;
---color-primary-300: #6edaca;
---color-primary-400: #3ec0b1;
---color-primary-500: #26a699;
---color-primary-600: #1c857d;
---color-primary-700: #1b6a65;
---color-primary-800: #1a5552;
---color-primary-900: #1a4744;
---color-primary-950: #092a29;
+  --color-primary-50: #f1fcf9;
+  --color-primary-100: #d1f6ee;
+  --color-primary-200: #a3ecdf;
+  --color-primary-300: #6edaca;
+  --color-primary-400: #3ec0b1;
+  --color-primary-500: #26a699;
+  --color-primary-600: #1c857d;
+  --color-primary-700: #1b6a65;
+  --color-primary-800: #1a5552;
+  --color-primary-900: #1a4744;
+  --color-primary-950: #092a29;
+  --color-semiblack: #292929;
 
   /*Aniamciones*/
   --animate-header-bouncing: bouncing 2s ease-out infinite;
@@ -37,5 +39,41 @@
       transform: translateY(3%);
       animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
     }
+  }
+}
+@layer utilities {
+  /* Animación del gradiente global */
+  @keyframes textbg {
+    from {
+      background-position-x: 0%;
+    }
+    to {
+      background-position-x: 200%;
+    }
+  }
+
+  .animate-textbg {
+    animation: textbg 6s linear infinite;
+    background-size: 200% auto;
+  }
+
+  /* Cada link ve una parte diferente del fondo del <header> */
+  .link-pos-0 {
+    background-position: 0% 50%;
+  }
+  .link-pos-1 {
+    background-position: 25% 50%;
+  }
+  .link-pos-2 {
+    background-position: 50% 50%;
+  }
+  .link-pos-3 {
+    background-position: 75% 50%;
+  }
+
+  /* bg-clip-text fallback */
+  .bg-clip-text {
+    -webkit-background-clip: text;
+    background-clip: text;
   }
 }

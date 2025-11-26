@@ -1,13 +1,14 @@
 ---
 const { title, idLink } = Astro.props;
 ---
-<section id={idLink} class="py-20">
+
+<div id={idLink} class="flex justify-center md:mt-20 mt-10 md:mb-5">
     <span
-        class="flex justify-center
-             text-[70px] md:text-[140px] font-extrabold
-               bg-linear-to-b from-primary-400/90 to-primary-700/10 blur-2x1 z-0
-               bg-clip-text text-transparent"
+        class="flex justify-center font-extrabold
+         bg-linear-to-b from-primary-400/90 to-primary-700/10
+         bg-clip-text text-transparent
+         text-[clamp(3rem,10vw,9rem)]"
     >
         {title}
     </span>
-</section>
+</div>

@@ -1,90 +1,182 @@
 ---
 import Image from "astro/components/Image.astro";
 import ProfileImage from "../assets/Profile.webp";
+
+const menuItems = [
+    { href: "#home", title: "Inicio", label: "Home", isHome: true },
+    { href: "#about", title: "Más sobre mí", label: "About" },
+    { href: "#projects", title: "Proyectos realizados", label: "Projects" },
+    { href: "#skills", title: "Habilidades técnicas", label: "Skills" },
+    { href: "#contact", title: "Contactame", label: "Contact" },
+];
 ---
 
+<style>
+    .nav-item.active {
+        animation: textbg 6s linear infinite;
+        background-size: 200% auto;
+        background-image: linear-gradient(
+            90deg,
+            #f1fcf9,
+            #d1f6ee,
+            #ffffff,
+            #d1f6ee,
+            #f1fcf9
+        ) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+    }
+</style>
+
 <header
-    class="flex sticky flex-none h-15 top-5 left-0 mx-5 2xl:w-1/2 w-10/12 justify-center items-center py-5
-    bg-linear-to-b from-primary-100/80 to-primary-100/50 saturate-200 backdrop-blur-md
-    border-2 border-primary-100 z-50
-    rounded-2xl my-5"
+    id="header"
+    class="sticky top-5 left-0 mx-auto 2xl:w-1/2 w-10/12 h-15 z-50
+           flex justify-center items-center rounded-2xl my-5
+           backdrop-blur-sm backdrop-saturate-125 backdrop-contrast-125
+           shadow-lg shadow-primary-800/30 bg-transparent"
 >
-    {/*Imagen a la izquierda*/}
-    <div class="absolute inset-0 items-center flex saturate-50">
-        <a
-            href="#home"
-            title="Incio"
-            aria-label="Incio"
-            class="hover:text-primary-600 hover:animate-header-bouncing hover:scale-110"
-        >
-            <Image
-                class="rounded-full mx-6"
-                src={ProfileImage}
-                alt="foto"
-                width="50"
-                height="50"
-                loading="eager"
-            />
-        </a>
-    </div>
-    {/*Menu si el dispositivo es muy pequeño*/}
     <a
         href="/"
-        class="absolute right-0 py-2 px-3 mr-5
-    bg-linear-to-b from-primary-100/80 to-primary-500/95
-    border-2 border-primary-100
-    rounded-2xl visible md:invisible z-10"
-        title="Menu"
-        aria-label="Menu"
-        >☰
-    </a>
-    {/*Botones del header*/}
-    <div
-        class="overflow-hidden group flex items-center max-w-full px-10 py-5 z-0 justify-around mx-10"
+        class="absolute right-0 flex items-center text-2xl p-2 mr-5
+               visible md:invisible z-10
+               nav-item
+                           animate-textbg hover:scale-110
+                           text-[clamp(1.6rem,0.2vw,8rem)] font-extrabold leading-none
+                           bg-[linear-gradient(90deg,#1c857d,#26a699,#6edaca,#26a699,#1c857d)]
+                           bg-cover bg-center text-transparent bg-clip-text
+                           px-4 py-1
+               "
     >
-        <a
-            href="#about"
-            title="Mas sobre mi"
-            aria-label="Mas sobre mi"
-            class="justify-center py-1 px-3
-                rounded-2xl mx-5 invisible md:visible
-                text-lg tracking-wide font-bold leading-none text-primary-900/80
-                hover:text-primary-600 hover:animate-header-bouncing hover:scale-110"
+        ☰
+    </a>
+    <a
+        href="#home"
+        id="link-home"
+        title="Inicio"
+        aria-label="Inicio"
+        class="absolute left-0 py-2 px-3 mr-5 z-10 nav-item visible md:invisible"
+    >
+        <Image
+            class="rounded-full w-full h-full"
+            src={ProfileImage}
+            alt="foto"
+            width="50"
+            height="50"
+            loading="eager"
+        />
+    </a>
+
+    <nav
+        id="menu"
+        class="hidden md:flex relative items-center justify-evenly gap-6 z-20 h-full w-full"
+    >
+        <div
+            id="nav-highlight"
+            class="absolute top-1/2 -translate-y-1/2 h-full
+           bg-primary-400 rounded-xl transition-all duration-300
+           opacity-0 pointer-events-none z-0"
         >
-            About
-        </a>
-        <a
-            href="#projects"
-            title="Proyectos realizados"
-            aria-label="Proyectos realizados"
-            class="justify-center py-1 px-3
-                rounded-2xl mx-5 invisible md:visible
-                text-lg tracking-wide font-bold leading-none text-primary-900/80
-                hover:text-primary-600 hover:animate-header-bouncing hover:scale-110"
-        >
-            Projects
-        </a>
-        <a
-            href="#skills"
-            title="Habilidades tecnicas"
-            aria-label="Habilidades tecnicas"
-            class="justify-center py-1 px-3
-                rounded-2xl mx-5 invisible md:visible
-                text-lg tracking-wide font-bold leading-none text-primary-900/80
-                hover:text-primary-600 hover:animate-header-bouncing hover:scale-110"
-        >
-            Skills
-        </a>
-        <a
-            href="#contact"
-            title="Contactame"
-            aria-label="Contactame"
-            class="justify-center py-1 px-3
-                rounded-2xl mx-5 invisible md:visible
-                text-lg tracking-wide font-bold leading-none text-primary-900/80
-                hover:text-primary-600 hover:animate-header-bouncing hover:scale-110"
-        >
-            Contact
-        </a>
-    </div>
+        </div>
+
+        {
+            menuItems[0].isHome && (
+                <a
+                    href="#home"
+                    id="link-home"
+                    title="Inicio"
+                    aria-label="Inicio"
+                    class=" z-10 nav-item px-3"
+                >
+                    <Image
+                        class="rounded-full w-full h-full"
+                        src={ProfileImage}
+                        alt="foto"
+                        width="50"
+                        height="50"
+                        loading="eager"
+                    />
+                </a>
+            )
+        }
+        {
+            menuItems
+                .filter((i) => !i.isHome)
+                .map((item) => (
+                    <a
+                        href={item.href}
+                        id={`link-${item.href.replace("#", "")}`}
+                        aria-label={item.title}
+                        class="z-10 nav-item inline-block
+                           animate-textbg hover:scale-110
+                           text-[clamp(1.6rem,0.2vw,8rem)] font-extrabold leading-none
+                           bg-[linear-gradient(90deg,#1c857d,#26a699,#6edaca,#26a699,#1c857d)]
+                           bg-cover bg-center text-transparent bg-clip-text
+                           px-4 py-1"
+                    >
+                        {item.label}
+                    </a>
+                ))
+        }
+    </nav>
 </header>
+
+<script>
+    const highlight = document.getElementById("nav-highlight");
+    const items = Array.from(document.querySelectorAll(".nav-item"));
+
+    function moveHighlight(el: Element) {
+        if (!highlight || !el.parentElement) return;
+
+        const rect = el.getBoundingClientRect();
+        const parentRect = el.parentElement.getBoundingClientRect();
+
+        highlight.style.width = rect.width + "px";
+        highlight.style.height = rect.height + "px";
+        highlight.style.left = rect.left - parentRect.left + "px";
+
+        highlight.style.opacity = "1";
+    }
+
+    items.forEach((item) => {
+        item.addEventListener("mouseenter", () => moveHighlight(item));
+        item.addEventListener("mouseleave", () => {
+            const active = document.querySelector(".nav-item.active");
+            if (active) moveHighlight(active);
+        });
+    });
+
+    const sections = items
+        .map((item) => {
+            const href = item.getAttribute("href");
+            if (!href || !href.startsWith("#")) return null;
+            const id = href.substring(1);
+            return { id, el: document.getElementById(id), link: item };
+        })
+        .filter((sec) => sec !== null);
+
+    function onScroll() {
+        let current = sections[0];
+
+        sections.forEach((sec) => {
+            if (!sec || !sec.el) return;
+            const top = sec.el.getBoundingClientRect().top;
+            if (top <= 150) current = sec;
+        });
+
+        if (current && current.link) {
+            moveHighlight(current.link);
+
+            items.forEach((i) => i.classList.remove("active"));
+
+            current.link.classList.add("active");
+        }
+    }
+
+    window.addEventListener("scroll", onScroll);
+    window.addEventListener("load", onScroll);
+
+    const header = document.getElementById("header");
+    if (header) {
+        header.addEventListener("mouseleave", onScroll);
+    }
+</script>
