@@ -1,124 +1,36 @@
 ---
-import Image from "astro/components/Image.astro";
-import Expenzzi from "../assets/Expenzzi.jpg";
+import Project1 from "./Projects/Project1.astro";
+import Project2 from "./Projects/Project2.astro";
+import Project3 from "./Projects/Project3.astro";
+import Project4 from "./Projects/Project4.astro";
+import Project5 from "./Projects/Project5.astro";
+import Project6 from "./Projects/Project6.astro";
 import Titles from "../common/Titles.astro";
+
+// Estilos base para las tarjetas
+const cardClass =
+    "relative flex flex-col justify-between overflow-hidden rounded-3xl p-6 " +
+    "shadow-lg shadow-primary-300/50" +
+    "bg-gradient-to-b from-white/5 to-white/0 " +
+    "backdrop-blur-xl backdrop-saturate-150 " +
+    "transition-all duration-300 ease-out " +
+    "group hover:border-primary-100/50 hover:shadow-lg hover:shadow-primary-500/20";
 ---
 
-<section id="projects" class="flex flex-col md:h-dvh h-auto">
+<section id="projects" class="w-full max-w-7xl mx-auto px-4 py-20">
     <Titles title="Proyectos" idLink="projects" />
+
     <div
-        class="grid md:grid-cols-3 grid-cols-1 md:gap-3 gap-5 justify-center max-w-full md:mb-20 h-full"
+        id="bento-grid"
+        class="grid grid-cols-1 md:grid-cols-3 gap-4 md:auto-rows-[300px]"
     >
-        <span
-            class="col-span-3 py-30 rounded-2xl relative flex justify-start flex-col
-    bg-primary-700/50 border border-primary-100/60
-    bg-linear-to-b from-[#252b5b] to-primary-100/50 backdrop-backdrop-saturate-200
-    backdrop-blur-2xl
-    hover:scale-105 transition group"
-        >
-            <Image
-                src={Expenzzi}
-                alt="Expenzzi"
-                width="80"
-                height="80"
-                loading="lazy"
-                class="absolute bottom-0 right-0 rounded"
-            />
-            <div
-                class="flex flex-col absolute gap-2 top-0 left-1/2 -translate-x-1/2"
-            >
-                <h1
-                    class="flex justify-center text-white font-semibold text-4xl"
-                >
-                    Expenzzi
-                </h1>
-                <p
-                    class="flex justify-center text-white font-nomral text-3xl opacity-85 group-hover:opacity-100 transition"
-                >
-                    Aplicacion móvil colaborativa para gestionar gasto, ingresos
-                    y ahorros
-                </p>
-            </div>
-        </span>
-        <span
-            class="md:col-span-2 col-span-3 row-start-2 py-20 rounded-2xl relative flex justify-start flex-col
-    bg-primary-700/50 border border-primary-100/60
-    bg-linear-to-b from-primary-500/80 to-primary-100/50 backdrop-saturate-200
-    backdrop-blur-2xl
-        hover:scale-105 transition group"
-        >
-            <div
-                class="flex flex-col absolute gap-2 top-0 left-1/2 -translate-x-1/2"
-            >
-                <h1
-                    class="flex justify-center text-white font-semibold text-3xl"
-                >
-                    Project2
-                </h1>
-                <p class="flex justify-center text-white font-nomral text-2xl">
-                    Description Project2
-                </p>
-            </div>
-        </span>
-        <span
-            class="md:col-span-1 col-span-3 row-start-3 md:row-start-2 py-20 rounded-2xl relative flex justify-start flex-col
-    bg-primary-700/50 border border-primary-100/60
-    bg-linear-to-b from-primary-500/80 to-primary-100/50 backdrop-saturate-200
-    backdrop-blur-2xl
-        hover:scale-105 transition group"
-        >
-            <div
-                class="flex flex-col absolute gap-2 top-0 left-1/2 -translate-x-1/2"
-            >
-                <h1
-                    class="flex justify-center text-white font-semibold text-lg"
-                >
-                    Project3
-                </h1>
-                <p class="flex justify-center text-white font-nomral text-m">
-                    Description Project3
-                </p>
-            </div>
-        </span>
-        <span
-            class="col-span-3 md:col-span-1 md:row-start-3 row-start-4 py-20 rounded-2xl relative flex justify-start flex-col
-    bg-primary-700/50 border border-primary-100/60
-    bg-linear-to-b from-primary-500/80 to-primary-100/50 backdrop-saturate-200
-    backdrop-blur-2xl
-        hover:scale-105 transition group"
-        >
-            <div
-                class="flex flex-col absolute gap-2 top-0 left-1/2 -translate-x-1/2"
-            >
-                <h1
-                    class="flex justify-center text-white font-semibold text-lg"
-                >
-                    Project4
-                </h1>
-                <p class="flex justify-center text-white font-nomral text-m">
-                    Description Project4
-                </p>
-            </div>
-        </span>
-        <span
-            class="col-span-3 md:col-span-2 md:row-start-3 row-start-5 py-20 rounded-2xl relative flex justify-start flex-col
-    bg-primary-700/50 border border-primary-100/60
-    bg-linear-to-b from-primary-500/80 to-primary-100/50 backdrop-saturate-200
-    backdrop-blur-2xl
-        hover:scale-105 transition group"
-        >
-            <div
-                class="flex flex-col absolute gap-2 top-0 left-1/2 -translate-x-1/2"
-            >
-                <h1
-                    class="flex justify-center text-white font-semibold text-2xl"
-                >
-                    Project5
-                </h1>
-                <p class="flex justify-center text-white font-nomral text-lg">
-                    Description Project5
-                </p>
-            </div>
-        </span>
+        <Project1 cardClass={cardClass} />
+        <Project2 cardClass={cardClass} />
+        <Project3 cardClass={cardClass} />
+        <Project4 cardClass={cardClass} />
+        <Project5 cardClass={cardClass} />
+        {/* <Project6 cardClass={cardClass} /> */}
     </div>
 </section>
+
+

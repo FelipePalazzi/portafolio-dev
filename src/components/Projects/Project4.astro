@@ -1,0 +1,72 @@
+---
+import TechStack from "../../common/TechStack.astro";
+const { cardClass } = Astro.props;
+import Tag from "../../common/TagProject.astro";
+---
+
+<article
+    class={`${cardClass} md:col-span-1 md:row-span-1 bg-[#042f2e] relative group overflow-hidden`}
+>
+    <div
+        class="absolute -right-10 -top-10 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"
+    >
+    </div>
+
+    <div
+        class="flex flex-col h-full md:-mt-10 mt-0 justify-between relative z-10 p-8 pointer-events-none"
+    >
+        <Tag text="BACKEND" variant="emerald" />
+        <div>
+            <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-bold text-emerald-100 leading-tight">
+                    RPA TurismoCity
+                </h3>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-5 h-5 text-emerald-400 opacity-80"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    ><path d="M2 12h20"></path><path d="M13 2l9 10-9 10"
+                    ></path><path d="M2 12l5-5m0 10l-5-5"></path></svg
+                >
+            </div>
+            <p class="text-emerald-200/70 text-xs mb-3">
+                Automatización de vuelos baratos.
+            </p>
+        </div>
+
+        <div class="space-y-2 mb-2">
+            <p
+                class="text-[10px] uppercase tracking-widest text-emerald-500 font-bold"
+            >
+                Colaboradores
+            </p>
+            <ul class="space-y-1">
+                {
+                    ["Mauricio S.", "Esteban G.", "Emmanuel D."].map((name) => (
+                        <li class="flex items-center gap-2 bg-emerald-900/40 p-1.5 rounded-lg border border-emerald-500/10">
+                            <div class="w-4 h-4 rounded-full bg-emerald-500 flex items-center justify-center text-[8px] font-bold text-black">
+                                {name.charAt(0)}
+                            </div>
+                            <span class="text-[10px] text-emerald-100 truncate">
+                                {name}
+                            </span>
+                        </li>
+                    ))
+                }
+            </ul>
+        </div>
+
+        <TechStack techs={["TagUI", "Python"]} />
+    </div>
+
+    <a
+        href="https://github.com/FelipePalazzi/AutomatizacionTP2RPA"
+        target="_blank"
+        class="absolute inset-0 z-50"
+        aria-label="Ver RPA"></a>
+</article>

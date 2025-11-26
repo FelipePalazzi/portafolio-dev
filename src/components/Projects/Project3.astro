@@ -1,0 +1,43 @@
+---
+import Image from "astro/components/Image.astro";
+import TechStack from "../../common/TechStack.astro";
+const { cardClass } = Astro.props;
+import folder from "../../assets/folder.svg";
+import Tag from "../../common/TagProject.astro";
+---
+
+<article class={`${cardClass} md:col-span-1 md:row-span-1 overflow-visible bg-primary-600/80`}>
+    <div
+        class="absolute top-4 right-4 p-2 rounded-full"
+    >
+        <Image
+            src={folder}
+            alt="Dashboard"
+            width="20"
+            height="20"
+            class="bg-primary-500"
+        />
+    </div>
+    <div class="flex flex-col justify-center  h-full relative z-20 p-6 pointer-events-none items-start mr-25">
+        <Tag text="FRONTEND" variant="primary" />
+        <h3 class="text-3xl font-bold text-primary-200">Portafolio</h3>
+        <p class="text-primary-50 text-m mt-2">
+            Descripción sobre mis conocimientos y sobre mi
+        </p>
+        <TechStack
+            techs={[
+                "JavaScript",
+                "PostgreSQL",
+                "NodeJS",
+                "React",
+                "Git",
+                "GitHub",
+            ]}
+        />
+    </div>
+        <a
+        href="https://github.com/FelipePalazzi/portafolio-dev"
+        target="_blank"
+        class="absolute inset-0 z-50"
+        aria-label="Ver Portafolio"></a>
+</article>

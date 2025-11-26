@@ -1,0 +1,45 @@
+---
+import Image from "astro/components/Image.astro";
+import ExpenzziImg from "../../assets/Expenzzi.webp"; 
+import Expenzzi from "../../assets/ExpenzziIcon.webp"; 
+import TechStack from "../../common/TechStack.astro";
+import Tag from "../../common/TagProject.astro";
+const { cardClass } = Astro.props;
+---
+<article class={`${cardClass} md:col-span-1 md:row-span-2 h-[500px] md:h-full relative overflow-hidden bg-[#242f5c] group`}>
+        <div
+        class="absolute top-4 right-4 p-2 rounded-full"
+    >
+        <Image
+            src={Expenzzi}
+            alt="Dashboard"
+            width="50"
+            height="50"
+        />
+    </div>
+    <div class="z-30 relative p-6 h-full flex flex-col pointer-events-none">
+        <div>
+            <Tag text="FULL STACK" variant="blue" />
+            <h3 class="text-3xl font-bold text-blue-400 mb-2">Expenzzi</h3>
+            <p class="text-blue-200 text-m mb-4">
+                Gestión financiera colaborativa. Multimoneda ARS, UYU, USD.
+            </p>
+                   <div class="mt-3 flex items-center gap-2">
+                <span class="text-[10px] text-blue-400 font-bold uppercase">Team:</span>
+                <span class="text-xs text-blue-200">Mauricio S., Alexander R., Santiago A.</span>
+                </div>
+            <TechStack techs={["JavaScript", "PostgreSQL", "NodeJS", "React", "Git", "GitHub"]} />
+        </div>
+    </div>
+
+    <div class="absolute -bottom-20 left-0 w-full flex justify-center translate-y-12 group-hover:translate-y-4 transition-transform duration-500 ease-out z-20 pointer-events-none">
+        <Image
+            src={ExpenzziImg}
+            alt="Expenzzi App"
+            width="300"
+            height="400"
+            class="w-auto h-auto max-h-[400px] 2xl:scale-125 scale-90 object-contain rotate-6 group-hover:rotate-0 transition-all duration-500 shadow-2xl"
+        />
+    </div>
+    <a href="https://github.com/alex16ramos/Expenzzi-" target="_blank" class="absolute inset-0 z-50" aria-label="Ver Expenzzi"></a>
+</article>

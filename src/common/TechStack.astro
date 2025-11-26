@@ -1,0 +1,75 @@
+---
+const TechIcons = {
+  JavaScript:
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+  TypeScript:
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+  React:
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  NodeJS: "https://cdn.simpleicons.org/nodedotjs/339933",
+  CSharp:
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg",
+  PostgreSQL:
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+  Angular:
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg",
+  Git: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+  GitHub:
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+  Python:
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+  TagUI:
+    "https://raw.githubusercontent.com/kelaberetiv/TagUI/master/src/media/tagui_logo.png",
+  Express:
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+  Tailwind:
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
+  "Next.js":
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+  "C#": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg",
+} as const;
+
+type Tech = keyof typeof TechIcons;
+
+interface Props {
+  techs: Tech[];
+}
+
+const { techs } = Astro.props;
+---
+
+<div class="flex flex-wrap items-center gap-2 mt-4 z-20 relative select-none">
+  {
+    techs.map((tech) => (
+      <div
+        class="
+          group flex items-center 
+          bg-white/15 border border-white/10 hover:border-primary-400/50 hover:bg-primary-900/40
+          backdrop-blur-md rounded-full 
+          p-1.5 pr-1.5 hover:pr-3 hover:pl-2
+          transition-all duration-300 ease-in-out
+        "
+      >
+        <img
+          src={TechIcons[tech]}
+          alt={tech}
+          width="20"
+          height="20"
+          class="w-5 h-5 object-contain opacity-80 group-hover:opacity-100 transition-opacity"
+          loading="lazy"
+        />
+
+        <span
+          class="
+            max-w-0 overflow-hidden opacity-0 
+            group-hover:max-w-[100px] group-hover:opacity-100 group-hover:ml-2
+            text-xs font-medium text-primary-100 whitespace-nowrap
+            transition-all duration-300 ease-in-out
+          "
+        >
+          {tech}
+        </span>
+      </div>
+    ))
+  }
+</div>

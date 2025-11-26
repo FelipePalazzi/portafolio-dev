@@ -1,0 +1,38 @@
+---
+import Image from "astro/components/Image.astro";
+import TechStack from "../../common/TechStack.astro";
+const { cardClass } = Astro.props;
+import folder from "../../assets/folder.svg";
+---
+
+<article class={`${cardClass} md:col-span-1 md:row-span-1 md:h-full h-[230px] bg-primary-900/20`}>
+    <div
+        class="absolute top-4 right-4 bg-white/10 p-2 rounded-full backdrop-blur-md"
+    >
+        <Image
+            src={folder}
+            alt="Dashboard"
+            width="10"
+            height="10"
+        />
+    </div>
+    <div class="absolute top-0 mt-5 mr-25">
+        <h3 class="text-3xl font-bold text-primary-700">Proximamente</h3>
+        <p class="text-primary-600/80 text-m mt-2">
+            A completar con proyectos futuros
+        </p>
+        <TechStack
+            techs={[
+                "JavaScript",
+                "PostgreSQL",
+                "NodeJS",
+                "React",
+                "Git",
+                "GitHub",
+            ]}
+        />
+    </div>
+        <div
+        class="absolute inset-0 bg-linear-to-t from-primary-900/80 via-transparent to-transparent pointer-events-none z-10"
+    />
+</article>
