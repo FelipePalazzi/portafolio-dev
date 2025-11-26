@@ -16,20 +16,20 @@ import Chevron from "../common/Chevron.astro";
     <div
         class="flex w-full min-h-dvh items-center md:justify-center justify-start md:mt-0 -mt-15 md:flex-row flex-col md:gap-5 relative"
     >
-        {/*Imagen de perfil */}
         <div class="flex relative w-full max-w-[800px] aspect-square">
-            {/*Borde con máscara */}
+            {/* Borde con máscara */}
             <div
                 class="absolute inset-0 border-20 border-primary-950/50
-               bg-primary-950/50
-               mask-[url(../assets/maskProfile.svg)] mask-size-contain mask-no-repeat mask-position-center"
+        bg-primary-950/50
+        mask-[url('/maskProfile.svg')] mask-size-contain mask-no-repeat mask-position-center"
             >
             </div>
-            {/*Imagen interior con máscara */}
+
+            {/* Imagen interior con máscara */}
             <div
                 class="absolute inset-0 top-3 left-3
-               bg-[url(../assets/Profile.webp)] bg-cover
-               mask-[url(../assets/maskProfile.svg)] mask-size-contain mask-no-repeat mask-position-center"
+        bg-[url('/Profile.webp')] bg-cover
+        mask-[url('/maskProfile.svg')] mask-size-contain mask-no-repeat mask-position-center"
             >
             </div>
         </div>
