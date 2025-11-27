@@ -7,7 +7,7 @@ import Titles from "../common/Titles.astro";
     class="flex flex-col min-h-dvh w-full md:px-20 px-6 py-20 justify-center items-center"
 >
     <div class="w-full max-w-7xl">
-        <Titles title="Sobre mi" idLink="about" />
+        <Titles title="Sobre mí" idLink="about" />
 
         <div
             class="flex w-full md:h-[500px] h-auto gap-10 md:flex-row flex-col items-center mt-10"
@@ -46,10 +46,19 @@ import Titles from "../common/Titles.astro";
                 </div>
 
                 <div
-                    class="bg-primary-400/15 p-4 rounded-xl border-l-4 border-primary-500 backdrop-blur-2xl"
+                    class="relative overflow-hidden p-8 rounded-3xl
+                    border-2 border-white/10 bg-primary-100/50 shadow-lg shadow-primary-500/40
+                    backdrop-blur-md hover:border-white/40 hover:bg-primary-300/50
+                    transition-all duration-300 group"
                 >
+                    <!-- Decorative Blob -->
+                    <div
+                        class="absolute -right-6 -top-6 w-28 h-28 rounded-full bg-primary-500 opacity-40 blur-3xl group-hover:opacity-60 transition-opacity pointer-events-none"
+                    >
+                    </div>
+
                     <p
-                        class="text-primary-600/90 font-medium text-lg md:text-xl text-pretty"
+                        class="text-primary-600/90 font-medium text-lg md:text-xl text-pretty relative z-10"
                     >
                         Soy un desarrollador junior interesado en crear
                         soluciones eficientes y aprender nuevas tecnologías.
