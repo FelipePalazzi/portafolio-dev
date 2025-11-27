@@ -1,5 +1,5 @@
 ---
-const TechIcons = {
+export const TechIcons = {
   JavaScript:
     "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
   TypeScript:
@@ -27,7 +27,8 @@ const TechIcons = {
   "Next.js":
     "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
   "C#": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg",
-} as const;
+    Astro: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/astro/astro-original.svg",
+};
 
 type Tech = keyof typeof TechIcons;
 
