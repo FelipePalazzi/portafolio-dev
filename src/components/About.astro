@@ -2,42 +2,66 @@
 import Titles from "../common/Titles.astro";
 ---
 
-<section id="about" class="flex flex-col h-dvh w-full md:px-40">
-    <Titles title="Sobre mi" idLink="about" />
-    <div class="flex w-full h-full gap-10 md:flex-row flex-col">
-        <div class="flex h-full aspect-square">
-            {/*Imagen presentacion */}
-            <div
-                class="w-full h-full
-               bg-[url(../assets/About.webp)] bg-no-repeat bg-cover
-               saturate-50
-               rounded-2xl"
-            >
-            </div>
-        </div>
+<section
+    id="about"
+    class="flex flex-col min-h-dvh w-full md:px-20 px-6 py-20 justify-center items-center"
+>
+    <div class="w-full max-w-7xl">
+        <Titles title="Sobre mi" idLink="about" />
 
-        {/*Texto de presentacion */}
         <div
-            class="flex w-full flex-wrap flex-col md:gap-5 gap-3 md:items-start items-center"
+            class="flex w-full md:h-[500px] h-auto gap-10 md:flex-row flex-col items-center mt-10"
         >
-            <h1
-                class="flex md:text-start text-center items-start text-primary-700 font-bold text-[clamp(1.5rem,1.8vw,9rem)] split whitespace-normal"
+            {/* --- IMAGEN --- */}
+            <div class="md:w-1/2 w-full md:h-full h-[350px] relative shrink-0">
+                <div
+                    class="w-full h-full
+                    bg-[url(../assets/About.webp)] bg-no-repeat bg-cover bg-top
+                    saturate-50
+                    rounded-3xl shadow-xl shadow-primary-900/20"
+                >
+                </div>
+            </div>
+
+            {/* --- TEXTO --- */}
+            <div
+                class="md:w-1/2 w-full flex flex-col gap-6 md:items-start items-center text-center md:text-left"
             >
-                Residente en Concepción del Uruguay- Entre Ríos - Argentina
-            </h1>
-            <h1
-                class="flex md:text-start text-center items-start text-primary-700 font-bold text-[clamp(1.5rem,1.8vw,9rem)] split whitespace-normal"
-            >
-                Actualmente estudiante en la facultad UTN-FRCU. Cursando mi 4to
-                año
-            </h1>
-            <h3
-                class="flex text-start items-start text-primary-600/90 font-bold text-[clamp(1rem,0.5vw,9rem)] split whitespace-normal"
-            >
-                Soy un desarrollador junior interesado en crear soluciones
-                eficientes y aprender nuevas tecnologías Me gusta trabajar con
-                JavaScript, React, Node y bases de datos PostgresSQL
-            </h3>
+                <div>
+                    <h2
+                        class="text-primary-700 font-bold text-xl md:text-2xl lg:text-3xl leading-tight text-balance"
+                    >
+                        Tengo 23 años y resido en Concepción del Uruguay, Entre
+                        Ríos, Argentina.
+                    </h2>
+                </div>
+
+                <div>
+                    <p
+                        class="text-primary-600 font-semibold text-xl md:text-2xl leading-snug text-balance"
+                    >
+                        Actualmente estudiante en la facultad UTN-FRCU. Cursando
+                        mi 4to año.
+                    </p>
+                </div>
+
+                <div
+                    class="bg-primary-400/15 p-4 rounded-xl border-l-4 border-primary-500 backdrop-blur-2xl"
+                >
+                    <p
+                        class="text-primary-600/90 font-medium text-lg md:text-xl text-pretty"
+                    >
+                        Soy un desarrollador junior interesado en crear
+                        soluciones eficientes y aprender nuevas tecnologías.
+                        <span class="block mt-2">
+                            Me gusta trabajar con
+                            <strong class="text-primary-700">
+                                JavaScript, React, Node y PostgreSQL</strong
+                            >.
+                        </span>
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </section>

@@ -30,38 +30,41 @@ const menuItems = [
 
 <header
     id="header"
-    class="sticky top-5 left-0 mx-auto 2xl:w-1/2 w-10/12 h-15 z-50
+    class="sticky top-5 left-0 mx-auto 2xl:w-1/2 w-10/12 h-16 z-40
            flex justify-center items-center rounded-2xl my-5
            backdrop-blur-sm backdrop-saturate-125 backdrop-contrast-125
-           shadow-lg shadow-primary-800/30 bg-transparent"
+           shadow-lg shadow-primary-800/30 bg-transparent transition-all duration-300"
 >
-    <a
-        href="/"
-        class="absolute right-0 flex items-center text-2xl p-2 mr-5
-               visible md:invisible z-10
-               nav-item
-                           animate-textbg hover:scale-110
-                           text-[clamp(1.6rem,0.2vw,8rem)] font-extrabold leading-none
-                           bg-[linear-gradient(90deg,#1c857d,#26a699,#6edaca,#26a699,#1c857d)]
-                           bg-cover bg-center text-transparent bg-clip-text
-                           px-4 py-1
-               "
+    <button
+        id="menu-toggle"
+        aria-label="Abrir menú"
+        class="absolute right-0 flex items-center justify-center p-2 mr-4 z-50
+               visible md:invisible group"
     >
-        ☰
-    </a>
+        <div class="space-y-1.5 pointer-events-none">
+            <span
+                class="block w-8 h-0.5 bg-primary-200 transition-transform duration-300 group-[.open]:rotate-45 group-[.open]:translate-y-2"
+            ></span>
+            <span
+                class="block w-8 h-0.5 bg-primary-200 transition-opacity duration-300 group-[.open]:opacity-0"
+            ></span>
+            <span
+                class="block w-8 h-0.5 bg-primary-200 transition-transform duration-300 group-[.open]:-rotate-45 group-[.open]:-translate-y-2"
+            ></span>
+        </div>
+    </button>
+
     <a
         href="#home"
-        id="link-home"
-        title="Inicio"
-        aria-label="Inicio"
-        class="absolute left-0 py-2 px-3 mr-5 z-10 nav-item visible md:invisible"
+        class="absolute left-0 py-2 px-3 mr-5 z-40 visible md:invisible"
+        aria-label="Ir al inicio"
     >
         <Image
-            class="rounded-full w-full h-full"
+            class="rounded-full w-full h-full border border-primary-500/30"
             src={ProfileImage}
             alt="foto"
-            width="50"
-            height="50"
+            width="45"
+            height="45"
             loading="eager"
         />
     </a>
@@ -73,8 +76,8 @@ const menuItems = [
         <div
             id="nav-highlight"
             class="absolute top-1/2 -translate-y-1/2 h-full
-           bg-primary-400 rounded-xl transition-all duration-300
-           opacity-0 pointer-events-none z-0"
+            bg-primary-400 rounded-xl transition-all duration-300
+            opacity-0 pointer-events-none z-0"
         >
         </div>
 
@@ -83,9 +86,8 @@ const menuItems = [
                 <a
                     href="#home"
                     id="link-home"
-                    title="Inicio"
+                    class="z-10 nav-item px-3"
                     aria-label="Inicio"
-                    class=" z-10 nav-item px-3"
                 >
                     <Image
                         class="rounded-full w-full h-full"
@@ -104,11 +106,9 @@ const menuItems = [
                 .map((item) => (
                     <a
                         href={item.href}
-                        id={`link-${item.href.replace("#", "")}`}
-                        aria-label={item.title}
                         class="z-10 nav-item inline-block
                            animate-textbg hover:scale-110
-                           text-[clamp(1.6rem,0.2vw,8rem)] font-extrabold leading-none
+                           text-[clamp(1.2rem,0.2vw,8rem)] font-extrabold leading-none
                            bg-[linear-gradient(90deg,#1c857d,#26a699,#6edaca,#26a699,#1c857d)]
                            bg-cover bg-center text-transparent bg-clip-text
                            px-4 py-1"
@@ -120,20 +120,137 @@ const menuItems = [
     </nav>
 </header>
 
+<div
+    id="mobile-menu-overlay"
+    class="fixed inset-0 z-40 bg-primary-950/95 backdrop-blur-xl flex flex-col justify-center items-center opacity-0 invisible"
+>
+    <button
+        id="close-menu-btn"
+        class="absolute top-6 right-6 p-2 text-primary-200 hover:text-white hover:scale-110 hover:rotate-90 transition-all duration-300 z-50 cursor-pointer"
+        aria-label="Cerrar menú"
+    >
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="40"
+            height="40"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        >
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+    </button>
+
+    <nav class="flex flex-col gap-8 text-center">
+        {
+            menuItems.map((item) => (
+                <a
+                    href={item.href}
+                    class="mobile-link text-4xl font-bold text-primary-100 hover:text-primary-400 transition-colors opacity-0 translate-y-8"
+                    onclick="closeMobileMenu()"
+                >
+                    {item.title}
+                </a>
+            ))
+        }
+    </nav>
+
+    <div
+        class="absolute bottom-0 left-0 w-full h-1/3 bg-linear-to-t from-primary-900/50 to-transparent pointer-events-none"
+    >
+    </div>
+</div>
+
 <script>
+    import { gsap } from "gsap";
+
+    declare global {
+        interface Window {
+            closeMobileMenu: () => void;
+        }
+    }
+
+    // --- LÓGICA DEL MENÚ MÓVIL ---
+    const menuToggle = document.getElementById("menu-toggle");
+    const closeBtn = document.getElementById("close-menu-btn"); // NUEVO
+    const mobileOverlay = document.getElementById("mobile-menu-overlay");
+    const mobileLinks = document.querySelectorAll(".mobile-link");
+    let isMenuOpen = false;
+
+    // Función global para cerrar menú (útil al hacer click en links)
+    window.closeMobileMenu = () => {
+        if (!isMenuOpen) return;
+        toggleMenu();
+    };
+
+    function toggleMenu() {
+        isMenuOpen = !isMenuOpen;
+
+        // Animación del icono hamburguesa
+        menuToggle?.classList.toggle("open");
+
+        if (isMenuOpen) {
+            // ABRIR
+            document.body.style.overflow = "hidden"; // Bloquear scroll
+
+            // 1. Mostrar overlay
+            gsap.to(mobileOverlay, {
+                duration: 0.5,
+                autoAlpha: 1, // autoAlpha maneja opacity + visibility
+                ease: "power2.out",
+            });
+
+            // 2. Staggered animation de los links (Efecto ReactBits)
+            gsap.to(mobileLinks, {
+                duration: 0.8,
+                y: 0,
+                opacity: 1,
+                stagger: 0.1, // Retraso entre cada elemento
+                ease: "power3.out",
+                delay: 0.1,
+            });
+        } else {
+            // CERRAR
+            document.body.style.overflow = ""; // Desbloquear scroll
+
+            // 1. Ocultar links primero
+            gsap.to(mobileLinks, {
+                duration: 0.3,
+                y: 20,
+                opacity: 0,
+                stagger: 0.05,
+                ease: "power2.in",
+            });
+
+            // 2. Ocultar overlay
+            gsap.to(mobileOverlay, {
+                duration: 0.5,
+                autoAlpha: 0,
+                ease: "power2.in",
+                delay: 0.2,
+            });
+        }
+    }
+
+    menuToggle?.addEventListener("click", toggleMenu);
+    closeBtn?.addEventListener("click", toggleMenu); // NUEVO
+
+    // --- LÓGICA DEL HIGHLIGHT DESKTOP ---
     const highlight = document.getElementById("nav-highlight");
     const items = Array.from(document.querySelectorAll(".nav-item"));
 
     function moveHighlight(el: Element) {
         if (!highlight || !el.parentElement) return;
-
         const rect = el.getBoundingClientRect();
         const parentRect = el.parentElement.getBoundingClientRect();
 
-        highlight.style.width = rect.width + "px";
-        highlight.style.height = rect.height + "px";
-        highlight.style.left = rect.left - parentRect.left + "px";
-
+        highlight.style.width = `${rect.width}px`;
+        highlight.style.height = `${rect.height}px`;
+        highlight.style.left = `${rect.left - parentRect.left}px`;
         highlight.style.opacity = "1";
     }
 
@@ -142,41 +259,39 @@ const menuItems = [
         item.addEventListener("mouseleave", () => {
             const active = document.querySelector(".nav-item.active");
             if (active) moveHighlight(active);
+            else if (highlight) highlight.style.opacity = "0"; // Ocultar si no hay activo
         });
     });
 
+    // Lógica de Scroll Active
     const sections = items
         .map((item) => {
             const href = item.getAttribute("href");
-            if (!href || !href.startsWith("#")) return null;
+            if (!href?.startsWith("#")) return null;
             const id = href.substring(1);
             return { id, el: document.getElementById(id), link: item };
         })
-        .filter((sec) => sec !== null);
+        .filter(Boolean); // Filtrar nulos
 
     function onScroll() {
-        let current = sections[0];
+        // Solo ejecutar lógica de scroll en Desktop para ahorrar recursos
+        if (window.innerWidth < 768) return;
 
+        let current = sections[0];
         sections.forEach((sec) => {
-            if (!sec || !sec.el) return;
-            const top = sec.el.getBoundingClientRect().top;
-            if (top <= 150) current = sec;
+            if (sec?.el && sec.el.getBoundingClientRect().top <= 150) {
+                current = sec;
+            }
         });
 
-        if (current && current.link) {
-            moveHighlight(current.link);
-
+        if (current?.link) {
             items.forEach((i) => i.classList.remove("active"));
-
             current.link.classList.add("active");
+            moveHighlight(current.link);
         }
     }
 
     window.addEventListener("scroll", onScroll);
-    window.addEventListener("load", onScroll);
-
-    const header = document.getElementById("header");
-    if (header) {
-        header.addEventListener("mouseleave", onScroll);
-    }
+    // Ejecutar al cargar para marcar la sección correcta
+    onScroll();
 </script>
