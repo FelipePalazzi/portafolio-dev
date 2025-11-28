@@ -1,8 +1,8 @@
 ---
 import Image from "astro/components/Image.astro";
-import TechStack from "../../common/TechStack.astro";
-import Tag from "../../common/TagProject.astro";
-import { useTranslations } from "../../i18n/utils";
+import TechStack from "@/common/TechStack.astro";
+import Tag from "@/common/TagProject.astro";
+import { useTranslations } from "@/i18n/utils";
 
 const { cardClass, lang } = Astro.props;
 const t = useTranslations(lang);

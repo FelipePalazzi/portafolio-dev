@@ -1,12 +1,12 @@
 ---
-import Project1 from "./Projects/Project1.astro";
-import Project2 from "./Projects/Project2.astro";
-import Project3 from "./Projects/Project3.astro";
-import Project4 from "./Projects/Project4.astro";
-import Project5 from "./Projects/Project5.astro";
-import Project6 from "./Projects/Project6.astro";
-import Titles from "../common/Titles.astro";
-import { useTranslations } from "../i18n/utils";
+import Project1 from "@/components/Projects/Project1.astro";
+import Project2 from "@/components/Projects/Project2.astro";
+import Project3 from "@/components/Projects/Project3.astro";
+import Project4 from "@/components/Projects/Project4.astro";
+import Project5 from "@/components/Projects/Project5.astro";
+import Project6 from "@/components/Projects/Project6.astro";
+import Titles from "@/common/Titles.astro";
+import { useTranslations } from "@/i18n/utils";
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
@@ -21,7 +21,7 @@ const cardClass =
     "group hover:border-primary-100/50 hover:shadow-lg hover:shadow-primary-500/20";
 ---
 
-<section id="projects" class="w-full max-w-7xl mx-auto px-4 py-20">
+<section id="projects" class="scroll-mt-24 w-full max-w-7xl mx-auto px-4 py-10">
     <Titles title={t("projects.title")} idLink="projects" />
 
     <div

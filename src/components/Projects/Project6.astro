@@ -1,11 +1,11 @@
 ---
 import Image from "astro/components/Image.astro";
-import TechStack from "../../common/TechStack.astro";
-import { useTranslations } from "../../i18n/utils";
+import TechStack from "@/common/TechStack.astro";
+import { useTranslations } from "@/i18n/utils";
 
 const { cardClass, lang } = Astro.props;
 const t = useTranslations(lang);
-import folder from "../../assets/folder.svg";
+import folder from "@/assets/folder.svg";
 ---
 
 <article
