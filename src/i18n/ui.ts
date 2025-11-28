@@ -56,7 +56,7 @@ export const ui = {
         "contact.success.reset": "Enviar otro mensaje",
         "contact.copy": "Copiar",
         "contact.copied": "¡Copiado!",
-        "footer.copyright": "© 2025 Felipe Palazzi - Hecho con 🎵❤️ Astro, TypeScript y TailwindCSS",
+        "footer.copyright": "© 2025 Felipe Palazzi - Hecho con 🎵❤️ Astro, TypeScript, TailwindCSS y GSAP",
     },
     en: {
         "nav.home": "Home",
@@ -108,6 +108,6 @@ export const ui = {
         "contact.success.reset": "Send another message",
         "contact.copy": "Copy",
         "contact.copied": "Copied!",
-        "footer.copyright": "© 2025 Felipe Palazzi - Made with 🎵❤️ Astro, TypeScript and TailwindCSS",
+        "footer.copyright": "© 2025 Felipe Palazzi - Made with 🎵❤️ Astro, TypeScript, TailwindCSS and GSAP",
     },
 } as const;

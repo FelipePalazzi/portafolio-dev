@@ -23,8 +23,34 @@ const { lang = defaultLang } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.webp" />
     <title>Portafolio - Felipe Palazzi</title>
+    <meta
+      name="description"
+      content="Portafolio de Felipe Palazzi, indicando cuales son sus proyectos, habilidades. Carta de presentación y contacto"
+    />
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://palazzifelipe.vercel.app" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Portafolio - Felipe Palazzi" />
+    <meta
+      property="og:description"
+      content="Portafolio de Felipe Palazzi, indicando cuales son sus proyectos, habilidades. Carta de presentación y contacto"
+    />
+    <meta property="og:image" content="/Portafolio.webp" />
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="twitter:domain" content="palazzifelipe.vercel.app" />
+    <meta property="twitter:url" content="https://palazzifelipe.vercel.app" />
+    <meta name="twitter:title" content="Portafolio - Felipe Palazzi" />
+    <meta
+      name="twitter:description"
+      content="Portafolio de Felipe Palazzi, indicando cuales son sus proyectos, habilidades. Carta de presentación y contacto"
+    />
+    <meta name="twitter:image" content="/Portafolio.webp" />
+    <script src="/src/common/Split-text.js"></script>
   </head>
   <body class="xl:mx-30 mx-5 relative">
     <div
@@ -65,7 +91,6 @@ const { lang = defaultLang } = Astro.props;
       ;mask-composite:intersect;-webkit-mask-composite:source-in"
     >
     </div>
-    <script src="/src/common/Split-text.js"></script>
     <Header lang={lang} />
     <Hero lang={lang} />
     <Footer lang={lang} />

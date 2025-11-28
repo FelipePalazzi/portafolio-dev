@@ -1,46 +1,67 @@
-# Astro Starter Kit: Basics
+# 🚀 Portafolio Personal - Felipe Palazzi
 
-```sh
-npm create astro@latest -- --template basics
-```
+Portafolio web profesional desarrollado con Astro, presentando mis proyectos, habilidades y experiencia como desarrollador.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+🌐 **[Ver sitio en vivo](https://palazzifelipe.vercel.app)**
 
-## 🚀 Project Structure
+## ✨ Características Principales
 
-Inside of your Astro project, you'll see the following folders and files:
+- **🌍 Multiidioma**: Soporte completo para Español e Inglés con selector de idioma
+- **📱 Diseño Responsivo**: Optimizado para todos los dispositivos y tamaños de pantalla
+- **⚡ Alto Rendimiento**: Construido con Astro para máxima velocidad y SEO
+- **🎨 Animaciones Fluidas**: Implementado con GSAP para transiciones suaves
+
+## 🛠️ Tecnologías Utilizadas
+
+- **[Astro](https://astro.build)** - Framework web moderno
+- **[Tailwind CSS](https://tailwindcss.com)** - Framework de CSS utility-first
+- **[GSAP](https://greensock.com/gsap/)** - Librería de animaciones
+- **JavaScript** - Interactividad y lógica del cliente
+
+## 📁 Estructura del Proyecto
 
 ```text
 /
 ├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
+│   ├── favicon.webp
+│   └── Portafolio.webp
+├── src/
+│   ├── components/
+│   │   ├── About.astro
+│   │   ├── Contact.astro
+│   │   ├── Header.astro
+│   │   ├── Hero.astro
+│   │   ├── Footer.astro
+│   │   ├── LanguageSelector.astro
+│   │   ├── Projects.astro
+│   │   ├── Skills.astro
+│   │   └── SocialIcons.astro
+│   ├── i18n/
+│   │   └── ui.ts
+│   ├── layouts/
+│   │   └── Layout.astro
+│   ├── pages/
+│   │   └── index.astro
+│   └── styles/
+│       └── global.css
 └── package.json
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## 🧞 Comandos
 
-## 🧞 Commands
+Todos los comandos se ejecutan desde la raíz del proyecto en una terminal:
 
-All commands are run from the root of the project, from a terminal:
+| Comando           | Acción                                              |
+| :---------------- | :-------------------------------------------------- |
+| `npm install`     | Instala las dependencias                            |
+| `npm run dev`     | Inicia el servidor de desarrollo en `localhost:4321`|
+| `npm run build`   | Construye el sitio para producción en `./dist/`     |
+| `npm run preview` | Previsualiza la build localmente antes de desplegar |
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## � Despliegue
 
-## 👀 Want to learn more?
+El proyecto está desplegado en [Vercel](https://vercel.com) y se actualiza automáticamente con cada push a la rama principal.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+---
+
+Desarrollado con ❤️ por Felipe Palazzi
