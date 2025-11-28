@@ -1,35 +1,18 @@
 ---
 const { lang } = Astro.props;
+import LanguageIcon from "@/assets/Icons/LanguageIcon.svg";
 ---
 
 <div class="relative inline-block text-left dropdown-container">
     <button
         type="button"
-        class="inline-flex justify-center items-center p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all shadow-lg backdrop-blur-sm border border-white/10"
+        class="inline-flex justify-center items-center p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all shadow-lg backdrop-blur-sm border border-white/10 cursor-pointer"
         id="language-menu-button"
         aria-expanded="true"
         aria-haspopup="true"
         aria-label="Change Language"
     >
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="icon icon-tabler icons-tabler-outline icon-tabler-language"
-        >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <path d="M4 5h7"></path>
-            <path d="M9 3v2c0 4.418 -2.239 8 -5 8"></path>
-            <path d="M5 9c0 2.144 2.952 3.908 6.7 4"></path>
-            <path d="M12 20l4 -9l4 9"></path>
-            <path d="M19.1 18h-6.2"></path>
-        </svg>
+        <LanguageIcon />
     </button>
 
     <div

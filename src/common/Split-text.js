@@ -1,25 +1,25 @@
 import { gsap } from "gsap";
-    
+
 import { SplitText } from "gsap/SplitText";
 
 gsap.registerPlugin(SplitText);
 let split, animation;
 document.fonts.ready.then(() => {
-animation && animation.revert();
+  animation && animation.revert();
   animation = gsap.from(split.words, {
     y: -100,
     opacity: 0,
     rotation: "random(-80, 80)",
-    duration: 0.7, 
+    duration: 0.7,
     ease: "back",
     stagger: 0.15
   })
-  
+
 });
 function setup() {
   split && split.revert();
   animation && animation.revert();
-  split = SplitText.create(".text", {type:"chars,words,lines"});
+  split = SplitText.create(".text", { type: "chars,words,lines" });
 }
 setup();
 window.addEventListener("resize", setup);
@@ -44,4 +44,4 @@ document.fonts.ready.then(() => {
       return split;
     }
   });
-  });
+});

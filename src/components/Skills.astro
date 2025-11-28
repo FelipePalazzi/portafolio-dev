@@ -1,7 +1,7 @@
 ---
-import Titles from "../common/Titles.astro";
-import { TechIcons } from "../common/TechStack.astro";
-import { useTranslations } from "../i18n/utils";
+import Titles from "@/common/Titles.astro";
+import { TechIcons } from "@/common/TechStack.astro";
+import { useTranslations } from "@/i18n/utils";
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
@@ -80,7 +80,7 @@ const skills = [
 ];
 ---
 
-<section id="skills" class="w-full max-w-7xl mx-auto px-4 py-20">
+<section id="skills" class="scroll-mt-24 w-full max-w-7xl mx-auto px-4 py-10">
     <Titles title={t("skills.title")} idLink="skills" />
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
