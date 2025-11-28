@@ -1,6 +1,9 @@
 ---
 import TechStack from "../../common/TechStack.astro";
-const { cardClass } = Astro.props;
+import { useTranslations } from "../../i18n/utils";
+
+const { cardClass, lang } = Astro.props;
+const t = useTranslations(lang);
 import Tag from "../../common/TagProject.astro";
 ---
 
@@ -19,7 +22,7 @@ import Tag from "../../common/TagProject.astro";
         <div>
             <div class="flex justify-between items-start mb-2">
                 <h3 class="text-xl font-bold text-emerald-100 leading-tight">
-                    RPA TurismoCity
+                    {t("projects.p4.title")}
                 </h3>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +38,7 @@ import Tag from "../../common/TagProject.astro";
                 >
             </div>
             <p class="text-emerald-200/70 text-xs mb-3">
-                Automatización de vuelos baratos.
+                {t("projects.p4.desc")}
             </p>
         </div>
 
@@ -43,7 +46,7 @@ import Tag from "../../common/TagProject.astro";
             <p
                 class="text-[10px] uppercase tracking-widest text-emerald-500 font-bold"
             >
-                Colaboradores
+                {t("projects.team")}
             </p>
             <ul class="space-y-1">
                 {

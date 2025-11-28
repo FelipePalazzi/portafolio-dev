@@ -1,14 +1,20 @@
 ---
 import Image from "astro/components/Image.astro";
 import ProfileImage from "../assets/Profile.webp";
+import { useTranslations } from "../i18n/utils";
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
 
 const menuItems = [
-    { href: "#home", title: "Inicio", label: "Inicio", isHome: true },
-    { href: "#about", title: "Más sobre mí", label: "Sobre mí" },
-    { href: "#projects", title: "Proyectos realizados", label: "Proyectos" },
-    { href: "#skills", title: "Habilidades técnicas", label: "Habilidades" },
-    { href: "#contact", title: "Contactame", label: "Contacto" },
+    { href: "#home", title: t("nav.home"), label: t("nav.home"), isHome: true },
+    { href: "#about", title: t("nav.about"), label: t("nav.about") },
+    { href: "#projects", title: t("nav.projects"), label: t("nav.projects") },
+    { href: "#skills", title: t("nav.skills"), label: t("nav.skills") },
+    { href: "#contact", title: t("nav.contact"), label: t("nav.contact") },
 ];
+
+const currentPath = Astro.url.pathname;
 ---
 
 <style>

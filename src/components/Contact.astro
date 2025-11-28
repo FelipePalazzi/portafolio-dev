@@ -1,12 +1,16 @@
 ---
 import Titles from "../common/Titles.astro";
 import SocialIcons from "./SocialIcons.astro";
+import { useTranslations } from "../i18n/utils";
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
 ---
 
-<Titles title="Contacto" idLink="contact" />
+<Titles title={t("contact.title")} idLink="contact" />
 
 <section
-    class="flex flex-col md:flex-row gap-10 md:gap-20 justify-center items-start w-full max-w-6xl mx-auto px-4 pb-20"
+    class="flex flex-col md:flex-row gap-10 md:gap-20 justify-center items-stretch w-full max-w-6xl mx-auto px-4 pb-20"
 >
     <!-- Left Side: Info & Socials -->
     <div
@@ -23,15 +27,13 @@ import SocialIcons from "./SocialIcons.astro";
 
         <div class="space-y-4 relative z-10">
             <p class="text-2xl text-primary-600 leading-relaxed">
-                Estoy siempre abierto a nuevas oportunidades y colaboraciones.
-                Si tienes alguna pregunta o simplemente quieres saludar, ¡no
-                dudes en escribirme!
+                {t("contact.text")}
             </p>
             <div class="flex items-center gap-2 text-primary-800 font-medium">
                 <button
                     id="copy-email-btn"
                     class="hover:text-primary-500 transition-all relative group flex items-center gap-2 cursor-pointer"
-                    aria-label="Copiar email al portapapeles"
+                    aria-label={t("contact.copy")}
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -78,7 +80,7 @@ import SocialIcons from "./SocialIcons.astro";
                         id="copy-tooltip"
                         class="absolute -top-8 left-1/2 -translate-x-1/2 bg-primary-800 text-white text-xs py-1 px-2 rounded opacity-0 transition-opacity pointer-events-none whitespace-nowrap"
                     >
-                        Copiar
+                        {t("contact.copy")}
                     </span>
                 </button>
             </div>
@@ -86,7 +88,7 @@ import SocialIcons from "./SocialIcons.astro";
 
         <div class="pt-4 relative z-10">
             <h4 class="text-xl font-semibold text-primary-800 mb-4">
-                Redes Sociales
+                {t("contact.socials")}
             </h4>
             <div class="flex justify-start">
                 <SocialIcons />
@@ -130,16 +132,16 @@ import SocialIcons from "./SocialIcons.astro";
                 </svg>
             </div>
             <h3 class="text-2xl font-bold text-primary-800">
-                ¡Mensaje Enviado!
+                {t("contact.success.title")}
             </h3>
             <p class="text-primary-700">
-                Gracias por contactarme. Te responderé lo antes posible.
+                {t("contact.success.text")}
             </p>
             <button
                 id="reset-form"
                 class="mt-6 px-6 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
             >
-                Enviar otro mensaje
+                {t("contact.success.reset")}
             </button>
         </div>
 
@@ -158,13 +160,13 @@ import SocialIcons from "./SocialIcons.astro";
                 <label
                     for="name"
                     class="text-sm font-medium text-primary-900 group-hover:text-primary-800 transition-colors"
-                    >Nombre</label
+                    >{t("contact.form.name")}</label
                 >
                 <input
                     type="text"
                     id="name"
                     name="name"
-                    placeholder="Tu nombre"
+                    placeholder={t("contact.form.namePlaceholder")}
                     class="w-full px-4 py-3 rounded-xl bg-white/60 border border-white/20 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all placeholder:text-primary-400/70 text-primary-900"
                     required
                 />
@@ -174,13 +176,13 @@ import SocialIcons from "./SocialIcons.astro";
                 <label
                     for="email"
                     class="text-sm font-medium text-primary-900 group-hover:text-primary-800 transition-colors"
-                    >Email</label
+                    >{t("contact.form.email")}</label
                 >
                 <input
                     type="email"
                     id="email"
                     name="email"
-                    placeholder="tu@email.com"
+                    placeholder={t("contact.form.emailPlaceholder")}
                     class="w-full px-4 py-3 rounded-xl bg-white/60 border border-white/20 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all placeholder:text-primary-400/70 text-primary-900"
                     required
                 />
@@ -190,13 +192,13 @@ import SocialIcons from "./SocialIcons.astro";
                 <label
                     for="message"
                     class="text-sm font-medium text-primary-900 group-hover:text-primary-800 transition-colors"
-                    >Mensaje</label
+                    >{t("contact.form.message")}</label
                 >
                 <textarea
                     id="message"
                     name="message"
                     rows="4"
-                    placeholder="¿En qué puedo ayudarte?"
+                    placeholder={t("contact.form.messagePlaceholder")}
                     class="w-full px-4 py-3 rounded-xl bg-white/60 border border-white/20 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all resize-none placeholder:text-primary-400/70 text-primary-900"
                     required></textarea>
             </div>
@@ -206,7 +208,7 @@ import SocialIcons from "./SocialIcons.astro";
                 id="submit-btn"
                 class="w-full py-3 px-6 bg-primary-600 hover:bg-primary-500 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 flex justify-center items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-                <span>Enviar Mensaje</span>
+                <span>{t("contact.form.send")}</span>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -230,13 +232,17 @@ import SocialIcons from "./SocialIcons.astro";
     </div>
 </section>
 
-<script>
-    const form = document.getElementById("contact-form") as HTMLFormElement;
+<script
+    define:vars={{
+        sendingText: t("contact.form.sending"),
+        copyText: t("contact.copy"),
+        copiedText: t("contact.copied"),
+    }}
+>
+    const form = document.getElementById("contact-form");
     const successMessage = document.getElementById("success-message");
     const resetBtn = document.getElementById("reset-form");
-    const submitBtn = document.getElementById(
-        "submit-btn",
-    ) as HTMLButtonElement;
+    const submitBtn = document.getElementById("submit-btn");
     const btnText = submitBtn?.querySelector("span");
 
     if (form && successMessage && submitBtn && btnText) {
@@ -265,7 +271,7 @@ import SocialIcons from "./SocialIcons.astro";
 
             // Loading state
             const originalText = btnText.innerText;
-            btnText.innerText = "Enviando...";
+            btnText.innerText = sendingText;
             submitBtn.disabled = true;
 
             try {
@@ -320,7 +326,7 @@ import SocialIcons from "./SocialIcons.astro";
             const email = emailText.innerText;
             navigator.clipboard.writeText(email).then(() => {
                 // Show copied feedback
-                tooltip.innerText = "¡Copiado!";
+                tooltip.innerText = copiedText;
                 tooltip.classList.remove("opacity-0");
                 tooltip.classList.add("opacity-100");
 
@@ -328,7 +334,7 @@ import SocialIcons from "./SocialIcons.astro";
                     tooltip.classList.remove("opacity-100");
                     tooltip.classList.add("opacity-0");
                     setTimeout(() => {
-                        tooltip.innerText = "Copiar";
+                        tooltip.innerText = copyText;
                     }, 300);
                 }, 2000);
             });

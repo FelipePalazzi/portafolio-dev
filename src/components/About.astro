@@ -1,5 +1,9 @@
 ---
 import Titles from "../common/Titles.astro";
+import { useTranslations } from "../i18n/utils";
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <section
@@ -7,7 +11,7 @@ import Titles from "../common/Titles.astro";
     class="flex flex-col min-h-dvh w-full md:px-20 px-6 py-20 justify-center items-center"
 >
     <div class="w-full max-w-7xl">
-        <Titles title="Sobre mí" idLink="about" />
+        <Titles title={t("about.title")} idLink="about" />
 
         <div
             class="flex w-full md:h-[500px] h-auto gap-10 md:flex-row flex-col items-center mt-10"
@@ -31,8 +35,7 @@ import Titles from "../common/Titles.astro";
                     <h2
                         class="text-primary-700 font-bold text-xl md:text-2xl lg:text-3xl leading-tight text-balance"
                     >
-                        Tengo 23 años y resido en Concepción del Uruguay, Entre
-                        Ríos, Argentina.
+                        {t("about.location")}
                     </h2>
                 </div>
 
@@ -40,8 +43,7 @@ import Titles from "../common/Titles.astro";
                     <p
                         class="text-primary-600 font-semibold text-xl md:text-2xl leading-snug text-balance"
                     >
-                        Actualmente estudiante en la facultad UTN-FRCU. Cursando
-                        mi 4to año.
+                        {t("about.education")}
                     </p>
                 </div>
 
@@ -60,10 +62,9 @@ import Titles from "../common/Titles.astro";
                     <p
                         class="text-primary-600/90 font-medium text-lg md:text-xl text-pretty relative z-10"
                     >
-                        Soy un desarrollador junior interesado en crear
-                        soluciones eficientes y aprender nuevas tecnologías.
+                        {t("about.description")}
                         <span class="block mt-2">
-                            Me gusta trabajar con
+                            {t("about.stack")}
                             <strong class="text-primary-700">
                                 JavaScript, React, Node y PostgreSQL</strong
                             >.

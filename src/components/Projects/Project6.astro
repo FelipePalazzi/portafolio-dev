@@ -1,25 +1,27 @@
 ---
 import Image from "astro/components/Image.astro";
 import TechStack from "../../common/TechStack.astro";
-const { cardClass } = Astro.props;
+import { useTranslations } from "../../i18n/utils";
+
+const { cardClass, lang } = Astro.props;
+const t = useTranslations(lang);
 import folder from "../../assets/folder.svg";
 ---
 
-<article class={`${cardClass} md:col-span-1 md:row-span-1 md:h-full h-[230px] bg-primary-900/20`}>
+<article
+    class={`${cardClass} md:col-span-1 md:row-span-1 md:h-full h-[230px] bg-primary-900/20`}
+>
     <div
         class="absolute top-4 right-4 bg-white/10 p-2 rounded-full backdrop-blur-md"
     >
-        <Image
-            src={folder}
-            alt="Dashboard"
-            width="10"
-            height="10"
-        />
+        <Image src={folder} alt="Dashboard" width="10" height="10" />
     </div>
     <div class="absolute top-0 mt-5 mr-25">
-        <h3 class="text-3xl font-bold text-primary-700">Proximamente</h3>
+        <h3 class="text-3xl font-bold text-primary-700">
+            {t("projects.p6.title")}
+        </h3>
         <p class="text-primary-600/80 text-m mt-2">
-            A completar con proyectos futuros
+            {t("projects.p6.desc")}
         </p>
         <TechStack
             techs={[
@@ -32,7 +34,8 @@ import folder from "../../assets/folder.svg";
             ]}
         />
     </div>
-        <div
+    <div
         class="absolute inset-0 bg-linear-to-t from-primary-900/80 via-transparent to-transparent pointer-events-none z-10"
-    />
+    >
+    </div>
 </article>

@@ -6,6 +6,10 @@ import Project4 from "./Projects/Project4.astro";
 import Project5 from "./Projects/Project5.astro";
 import Project6 from "./Projects/Project6.astro";
 import Titles from "../common/Titles.astro";
+import { useTranslations } from "../i18n/utils";
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
 
 // Estilos base para las tarjetas
 const cardClass =
@@ -18,17 +22,17 @@ const cardClass =
 ---
 
 <section id="projects" class="w-full max-w-7xl mx-auto px-4 py-20">
-    <Titles title="Proyectos" idLink="projects" />
+    <Titles title={t("projects.title")} idLink="projects" />
 
     <div
         id="bento-grid"
         class="grid grid-cols-1 md:grid-cols-3 gap-4 md:auto-rows-[300px]"
     >
-        <Project1 cardClass={cardClass} />
-        <Project2 cardClass={cardClass} />
-        <Project3 cardClass={cardClass} />
-        <Project4 cardClass={cardClass} />
-        <Project5 cardClass={cardClass} />
-        {/* <Project6 cardClass={cardClass} /> */}
+        <Project1 cardClass={cardClass} lang={lang} />
+        <Project2 cardClass={cardClass} lang={lang} />
+        <Project3 cardClass={cardClass} lang={lang} />
+        <Project4 cardClass={cardClass} lang={lang} />
+        <Project5 cardClass={cardClass} lang={lang} />
+        {/* <Project6 cardClass={cardClass} lang={lang} /> */}
     </div>
 </section>

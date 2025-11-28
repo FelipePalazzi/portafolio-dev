@@ -5,6 +5,11 @@ import Projects from "./Projects.astro";
 import Skills from "./Skills.astro";
 import SocialIcons from "./SocialIcons.astro";
 import Chevron from "../common/Chevron.astro";
+import LanguageSelector from "./LanguageSelector.astro";
+import { useTranslations } from "../i18n/utils";
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <main
@@ -12,6 +17,11 @@ import Chevron from "../common/Chevron.astro";
     class="scroll-mt-32 flex-1 justify-center flex flex-col h-full min-w-full max-w-full md:-my-25
     relative"
 >
+    <!-- Language Selector (Top Right) -->
+    <div class="absolute top-5 right-5 z-50">
+        <LanguageSelector lang={lang} />
+    </div>
+
     {/*Presentacion imagen mas breve texto */}
     <div
         class="flex w-full min-h-dvh items-center md:justify-center justify-start md:mt-0 -mt-15 md:flex-row flex-col md:gap-5 relative"
@@ -41,17 +51,17 @@ import Chevron from "../common/Chevron.astro";
             <h1
                 class="flex md:text-start text-center items-start text-primary-700 font-bold text-[clamp(2.5rem,3vw,9rem)] text whitespace-normal"
             >
-                Hola!
+                {t("hero.greeting")}
             </h1>
             <h1
                 class="flex md:text-start text-center items-start text-primary-700 font-bold text-[clamp(3rem,3vw,9rem)] text whitespace-normal"
             >
-                Soy Felipe Palazzi
+                {t("hero.name")}
             </h1>
             <h3
                 class="flex text-start items-start text-primary-600/90 font-bold text-[clamp(1.7rem,0.2vw,9rem)] split whitespace-normal"
             >
-                Desarrollador full stack
+                {t("hero.role")}
             </h3>
             <SocialIcons />
         </div>
@@ -68,18 +78,18 @@ import Chevron from "../common/Chevron.astro";
 
     {/*About */}
     <div class="flex flex-col w-full h-full justify-center select-none">
-        <About />
+        <About lang={lang} />
     </div>
     {/*Proyectos */}
     <div class="flex flex-col w-full h-full justify-center select-none">
-        <Projects />
+        <Projects lang={lang} />
     </div>
     {/*Habilidades */}
     <div class="flex flex-col w-full h-full justify-center select-none">
-        <Skills />
+        <Skills lang={lang} />
     </div>
     {/*Contact */}
     <div class="flex flex-col w-full h-full justify-center select-none">
-        <Contact />
+        <Contact lang={lang} />
     </div>
 </main>

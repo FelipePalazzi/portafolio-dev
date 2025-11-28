@@ -1,0 +1,88 @@
+---
+const { lang } = Astro.props;
+---
+
+<div class="relative inline-block text-left dropdown-container">
+    <button
+        type="button"
+        class="inline-flex justify-center items-center p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all shadow-lg backdrop-blur-sm border border-white/10"
+        id="language-menu-button"
+        aria-expanded="true"
+        aria-haspopup="true"
+        aria-label="Change Language"
+    >
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-language"
+        >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M4 5h7"></path>
+            <path d="M9 3v2c0 4.418 -2.239 8 -5 8"></path>
+            <path d="M5 9c0 2.144 2.952 3.908 6.7 4"></path>
+            <path d="M12 20l4 -9l4 9"></path>
+            <path d="M19.1 18h-6.2"></path>
+        </svg>
+    </button>
+
+    <div
+        class="origin-top-right absolute right-0 mt-2 w-36 rounded-xl shadow-xl bg-white ring-1 ring-gray-100 ring-opacity-5 focus:outline-none hidden z-50 overflow-hidden"
+        role="menu"
+        aria-orientation="vertical"
+        aria-labelledby="language-menu-button"
+        id="language-menu"
+    >
+        <div class="py-1" role="none">
+            <a
+                href="/"
+                class={`block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 transition-colors ${lang === "es" ? "bg-gray-100 font-bold text-primary-600" : ""}`}
+                role="menuitem"
+            >
+                <span class="mr-2 font-bold text-xs">ES</span> Español
+            </a>
+            <a
+                href="/en"
+                class={`block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 transition-colors ${lang === "en" ? "bg-gray-100 font-bold text-primary-600" : ""}`}
+                role="menuitem"
+            >
+                <span class="mr-2 font-bold text-xs">EN</span> English
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    const button = document.getElementById("language-menu-button");
+    const menu = document.getElementById("language-menu");
+
+    if (button && menu) {
+        button.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const isHidden = menu.classList.contains("hidden");
+            if (isHidden) {
+                menu.classList.remove("hidden");
+                menu.classList.add("animate-fade-in-down");
+            } else {
+                menu.classList.add("hidden");
+                menu.classList.remove("animate-fade-in-down");
+            }
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener("click", (event) => {
+            if (
+                !button.contains(event.target as Node) &&
+                !menu.contains(event.target as Node)
+            ) {
+                menu.classList.add("hidden");
+            }
+        });
+    }
+</script>
