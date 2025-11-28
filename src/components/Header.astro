@@ -1,7 +1,7 @@
 ---
 import Image from "astro/components/Image.astro";
-import ProfileImage from "../assets/Profile.webp";
-import { useTranslations } from "../i18n/utils";
+import ProfileImage from "@/assets/Profile.webp";
+import { useTranslations } from "@/i18n/utils";
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
@@ -17,27 +17,10 @@ const menuItems = [
 const currentPath = Astro.url.pathname;
 ---
 
-<style>
-    .nav-item.active {
-        animation: textbg 6s linear infinite;
-        background-size: 200% auto;
-        background-image: linear-gradient(
-            90deg,
-            #f1fcf9,
-            #d1f6ee,
-            #ffffff,
-            #d1f6ee,
-            #f1fcf9
-        ) !important;
-        -webkit-background-clip: text !important;
-        -webkit-text-fill-color: transparent !important;
-    }
-</style>
-
 <header
     id="header"
-    class="sticky top-5 left-0 mx-auto 2xl:w-1/2 w-10/12 h-16 z-40
-           flex justify-center items-center rounded-2xl my-5
+    class="fixed top-5 left-0 right-0 mx-auto 2xl:w-1/2 w-10/12 h-16 z-40
+           flex justify-center items-center rounded-2xl
            backdrop-blur-sm backdrop-saturate-125 backdrop-contrast-125
            shadow-lg shadow-primary-800/30 bg-transparent transition-all duration-300"
 >
@@ -82,7 +65,7 @@ const currentPath = Astro.url.pathname;
         <div
             id="nav-highlight"
             class="absolute top-1/2 -translate-y-1/2 h-full
-            bg-primary-400 rounded-xl transition-all duration-300
+            bg-primary-700/60 rounded-xl transition-all duration-300
             opacity-0 pointer-events-none z-0"
         >
         </div>
@@ -115,7 +98,7 @@ const currentPath = Astro.url.pathname;
                         class="z-10 nav-item inline-block
                            animate-textbg hover:scale-110
                            text-[clamp(1.5rem,0.2vw,8rem)] font-extrabold leading-none
-                           bg-[linear-gradient(90deg,#1c857d,#26a699,#6edaca,#26a699,#1c857d)]
+                           bg-[linear-gradient(90deg,var(--color-primary-500),var(--color-primary-600),var(--color-primary-700),var(--color-primary-600),var(--color-primary-500))]
                            bg-cover bg-center text-transparent bg-clip-text
                            px-4 py-1"
                     >

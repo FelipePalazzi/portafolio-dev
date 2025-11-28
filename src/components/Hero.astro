@@ -1,12 +1,13 @@
 ---
-import About from "./About.astro";
-import Contact from "./Contact.astro";
-import Projects from "./Projects.astro";
-import Skills from "./Skills.astro";
-import SocialIcons from "./SocialIcons.astro";
-import Chevron from "../common/Chevron.astro";
-import LanguageSelector from "./LanguageSelector.astro";
-import { useTranslations } from "../i18n/utils";
+import About from "@/components/About.astro";
+import Contact from "@/components/Contact.astro";
+import Projects from "@/components/Projects.astro";
+import Skills from "@/components/Skills.astro";
+import SocialIcons from "@/components/SocialIcons.astro";
+import Chevron from "@/assets/Icons/Chevron.svg";
+import ThemeToggle from "@/components/ThemeToggle.astro";
+import LanguageSelector from "@/components/LanguageSelector.astro";
+import { useTranslations } from "@/i18n/utils";
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
@@ -14,17 +15,17 @@ const t = useTranslations(lang);
 
 <main
     id="home"
-    class="scroll-mt-32 flex-1 justify-center flex flex-col h-full min-w-full max-w-full md:-my-25
-    relative"
+    class="scroll-mt-32 flex-1 justify-center flex flex-col w-full relative gap-5"
 >
-    <!-- Language Selector (Top Right) -->
-    <div class="absolute top-5 right-5 z-50">
+    <!-- Language Selector & Theme Toggle (Top Right) -->
+    <div class="absolute xl:top-7 top-30 right-5 flex z-20 items-center gap-2">
+        <ThemeToggle />
         <LanguageSelector lang={lang} />
     </div>
 
     {/*Presentacion imagen mas breve texto */}
     <div
-        class="flex w-full min-h-dvh items-center md:justify-center justify-start md:mt-0 -mt-15 md:flex-row flex-col md:gap-5 relative"
+        class="flex w-full min-h-dvh items-center md:justify-center justify-start md:flex-row flex-col md:gap-5 relative pt-20 md:pt-0"
     >
         <div class="flex relative w-full max-w-[800px] aspect-square">
             {/* Borde con máscara */}
@@ -65,16 +66,38 @@ const t = useTranslations(lang);
             </h3>
             <SocialIcons />
         </div>
+        {/* Display del ver mas */}
+        <a
+            id="scroll-chevron"
+            href="#about"
+            title="Ver más"
+            aria-label="Ver más"
+            class="absolute bottom-10 left-0 right-0 mx-auto flex w-24 h-24 justify-center z-20 animate-header-bouncing text-primary-700 cursor-pointer"
+        >
+            <Chevron class="w-full h-full" />
+        </a>
     </div>
-    <a
-        href="#about"
-        title="Ver más"
-        aria-label="Ver más"
-        class="sticky bottom-5 mt-10 flex w-20 h-20 justify-center mx-auto z-20"
-    >
-        <Chevron />
-    </a>
-    {/* Display del ver mas */}
+
+    <script>
+        import { gsap } from "gsap";
+        import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        const chevron = document.getElementById("scroll-chevron");
+
+        if (chevron) {
+            gsap.to(chevron, {
+                scrollTrigger: {
+                    trigger: "body",
+                    start: "top top",
+                    end: "500px top",
+                    scrub: 1,
+                },
+                opacity: 0,
+            });
+        }
+    </script>
 
     {/*About */}
     <div class="flex flex-col w-full h-full justify-center select-none">

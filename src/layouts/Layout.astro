@@ -1,9 +1,9 @@
 ---
-import Header from "../components/Header.astro";
-import Hero from "../components/Hero.astro";
-import Footer from "../components/Footer.astro";
+import Header from "@/components/Header.astro";
+import Hero from "@/components/Hero.astro";
+import Footer from "@/components/Footer.astro";
 import "../styles/global.css";
-import { defaultLang } from "../i18n/ui";
+import { defaultLang } from "@/i18n/ui";
 
 const { lang = defaultLang } = Astro.props;
 ---
@@ -11,14 +11,15 @@ const { lang = defaultLang } = Astro.props;
 <!doctype html>
 <html
   lang={lang}
-  style="background:#f1fcf9;background-image:
+  class=""
+  style="background:var(--color-primary-100);background-image:
         radial-gradient(
           circle at top center,
-          #6edaca,
-          transparent 70%
+          var(--color-primary-400),
+          transparent 40%
         )
-      ;background-repeat:no-repeat
-      min-h-dvh min-w-dvw relative scroll-smooth"
+      ;background-repeat:no-repeat;
+      min-height: 100dvh;  position: relative;"
 >
   <head>
     <meta charset="UTF-8" />
@@ -51,13 +52,35 @@ const { lang = defaultLang } = Astro.props;
     />
     <meta name="twitter:image" content="/Portafolio.png" />
     <script src="/src/common/Split-text.js"></script>
+
+    <!-- Dark Mode Script -->
+    <script is:inline>
+      const theme = (() => {
+        if (
+          typeof localStorage !== "undefined" &&
+          localStorage.getItem("theme")
+        ) {
+          return localStorage.getItem("theme");
+        }
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          return "dark";
+        }
+        return "light";
+      })();
+
+      if (theme === "dark") {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
   </head>
-  <body class="xl:mx-30 mx-5 relative">
+  <body class="xl:px-30 px-10 relative transition-colors duration-300">
     <div
-      class="absolute inset-0 z-0"
+      class="absolute inset-0 w-full z-0 pointer-events-none"
       style="background-image:
-        linear-gradient(to right, #e7e5e4 1px, transparent 1px),
-        linear-gradient(to bottom, #e7e5e4 1px, transparent 1px)
+        linear-gradient(to right, var(--color-primary-50) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--color-primary-50) 1px, transparent 1px)
       ;background-size:20px 20px;background-position:0 0, 0 0;mask-image:
         repeating-linear-gradient(
           to right,
@@ -91,16 +114,91 @@ const { lang = defaultLang } = Astro.props;
       ;mask-composite:intersect;-webkit-mask-composite:source-in"
     >
     </div>
+
     <Header lang={lang} />
-    <Hero lang={lang} />
+
+    <!-- Animated Sections Wrapper -->
+    <div class="gsap-section">
+      <Hero lang={lang} />
+    </div>
+
     <Footer lang={lang} />
     <slot />
+
+    <!-- GSAP Animations -->
+    <script>
+      import { gsap } from "gsap";
+      import { ScrollTrigger } from "gsap/ScrollTrigger";
+      import Lenis from "lenis";
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Initialize Lenis for smooth scrolling
+      const lenis = new Lenis();
+
+      // Synchronize Lenis scroll with GSAP ScrollTrigger
+      lenis.on("scroll", ScrollTrigger.update);
+
+      // Add Lenis's requestAnimationFrame to GSAP's ticker
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+
+      // Disable lag smoothing in GSAP to prevent jumps during smooth scrolling
+      gsap.ticker.lagSmoothing(0);
+
+      // Animate sections on scroll
+      const sections = document.querySelectorAll("main > div");
+
+      sections.forEach((section) => {
+        gsap.fromTo(
+          section,
+          {
+            y: 50,
+            opacity: 0,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: section,
+              start: "top 80%", // Start animation when top of section hits 80% of viewport height
+              toggleActions: "play none none reverse",
+            },
+          },
+        );
+      });
+    </script>
   </body>
 </html>
 
 <style is:global>
   :root {
   }
+
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
+
   html {
     font-family:
       system-ui,

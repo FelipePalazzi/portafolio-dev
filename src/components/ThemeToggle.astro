@@ -1,0 +1,46 @@
+---
+import SunIcon from "@/assets/Icons/SunIcon.svg";
+import MoonIcon from "@/assets/Icons/MoonIcon.svg";
+---
+
+<button
+    id="theme-toggle"
+    class="p-3 rounded-full bg-primary-100 dark:bg-primary-800 text-primary-800 dark:text-primary-100 hover:scale-110 transition-transform duration-300 cursor-pointer"
+    aria-label="Toggle Dark Mode"
+>
+    <SunIcon />
+    <MoonIcon />
+</button>
+
+<script is:inline>
+    const themeToggle = document.getElementById("theme-toggle");
+    const sunIcon = document.getElementById("sun-icon");
+    const moonIcon = document.getElementById("moon-icon");
+
+    const updateIcons = (isDark) => {
+        if (isDark) {
+            sunIcon.classList.add("hidden");
+            moonIcon.classList.remove("hidden");
+        } else {
+            sunIcon.classList.remove("hidden");
+            moonIcon.classList.add("hidden");
+        }
+    };
+
+    if (themeToggle) {
+        // Initialize state
+        const isDark = document.documentElement.classList.contains("dark");
+        updateIcons(isDark);
+
+        const handleToggleClick = () => {
+            const element = document.documentElement;
+            element.classList.toggle("dark");
+
+            const isDarkNow = element.classList.contains("dark");
+            localStorage.setItem("theme", isDarkNow ? "dark" : "light");
+            updateIcons(isDarkNow);
+        };
+
+        themeToggle.addEventListener("click", handleToggleClick);
+    }
+</script>
