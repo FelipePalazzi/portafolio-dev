@@ -1,0 +1,113 @@
+---
+import Wave from "@/assets/sectionSeparator.svg";
+import WaveFill from "@/assets/sectionSeparatorFill.svg";
+---
+
+<div
+    class="absolute inset-0 w-full z-10 h-full select-none pointer-events-none mask-gradient py-50"
+>
+    <!-- Wave 1 (Slow) - Background Fill with Blur Mask -->
+    <div
+        class="absolute top-0 left-0 w-[200%] h-full flex animate-wave-slow z-0"
+    >
+        <div
+            class="w-1/2 h-full text-primary-300 dark:text-primary-400/80 flex items-start pt-2 mask-top-blur"
+        >
+            <WaveFill class="w-full h-full object-cover" />
+        </div>
+        <div
+            class="w-1/2 h-full text-primary-300 dark:text-primary-400/80 flex items-start pt-2 mask-top-blur"
+        >
+            <WaveFill class="w-full h-full object-cover" />
+        </div>
+    </div>
+
+    <!-- Wave 1 (Slow) - Line -->
+    <div
+        class="absolute top-0 left-0 w-[200%] h-full flex animate-wave-slow z-10"
+    >
+        <div
+            class="w-1/2 h-full text-primary-300/30 dark:text-primary-600/30 flex items-start pt-2 mask-top-blur"
+        >
+            <Wave class="w-full h-full object-cover" />
+        </div>
+        <div
+            class="w-1/2 h-full text-primary-300/30 dark:text-primary-600/30 flex items-start pt-2 mask-top-blur"
+        >
+            <Wave class="w-full h-full object-cover" />
+        </div>
+    </div>
+
+    <!-- Wave 2 (Fast & Inverted) - Background Fill with Blur Mask -->
+    <div
+        class="absolute top-0 left-0 w-[200%] h-full flex animate-wave-fast z-0"
+    >
+        <div
+            class="w-1/2 h-full text-primary-500/10 dark:text-primary-500/50 flex items-start pt-2 mask-top-blur"
+        >
+            <WaveFill class="w-full h-full object-cover scale-x-[-1]" />
+        </div>
+        <div
+            class="w-1/2 h-full text-primary-500/10 dark:text-primary-500/50 flex items-start pt-2 mask-top-blur"
+        >
+            <WaveFill class="w-full h-full object-cover scale-x-[-1]" />
+        </div>
+    </div>
+
+    <!-- Wave 2 (Fast & Inverted) - Line -->
+    <div
+        class="absolute top-0 left-0 w-[200%] h-full flex animate-wave-fast z-10"
+    >
+        <div
+            class="w-1/2 h-full text-primary-500/40 dark:text-primary-400/40 flex items-start pt-2 mask-top-blur"
+        >
+            <Wave class="w-full h-full object-cover scale-x-[-1]" />
+        </div>
+        <div
+            class="w-1/2 h-full text-primary-500/40 dark:text-primary-400/40 flex items-start pt-2 mask-top-blur"
+        >
+            <Wave class="w-full h-full object-cover scale-x-[-1]" />
+        </div>
+    </div>
+</div>
+
+<style>
+    .mask-gradient {
+        mask-image: linear-gradient(
+            to right,
+            transparent,
+            black 20%,
+            black 80%,
+            transparent
+        );
+        -webkit-mask-image: linear-gradient(
+            to right,
+            transparent,
+            black 20%,
+            black 80%,
+            transparent
+        );
+    }
+
+    .mask-top-blur {
+        mask-image: linear-gradient(to bottom, transparent, black 80%);
+        -webkit-mask-image: linear-gradient(to bottom, transparent, black 80%);
+    }
+
+    @keyframes wave {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(-50%);
+        }
+    }
+
+    .animate-wave-slow {
+        animation: wave 20s linear infinite;
+    }
+
+    .animate-wave-fast {
+        animation: wave 15s linear infinite reverse;
+    }
+</style>
